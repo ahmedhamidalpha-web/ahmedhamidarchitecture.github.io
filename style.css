@@ -1,284 +1,117 @@
-/* ===========================
-   AHMED HAMID ARCHITECTURE
-   MAIN STYLE
-=========================== */
-
-/* Google Font */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* إعدادات عامة */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fcfcfc;
+    color: #1a1a1a;
 }
 
-html{
-    scroll-behavior:smooth;
+/* الهيدر */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 84%;
+    top: 0;
+    z-index: 1000;
 }
 
-body{
-
-    font-family:'Poppins',sans-serif;
-    background:#ffffff;
-    color:#1d1d1d;
-    overflow-x:hidden;
-
+.logo img {
+    height: 50px; /* اضبط الارتفاع المناسب لشعارك */
+    object-fit: contain;
 }
 
-/*==============================
-    COLORS
-==============================*/
-
-:root{
-
-    --primary:#103B8C;
-    --primary-light:#5E8EF5;
-    --white:#ffffff;
-    --black:#111111;
-    --gray:#6b7280;
-    --light:#f5f7fb;
-    --border:#e6eaf2;
-
+/* قسم الـ Hero */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 60px 20px;
+    /* يمكنك إضافة صورة خلفية معمارية خفيفة هنا */
+    /* background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('architecture-bg.jpg') no-repeat center center/cover; */
 }
 
-/*==============================
-    CONTAINER
-==============================*/
-
-.container{
-
-    width:90%;
-    max-width:1300px;
-    margin:auto;
-
+.hero-content {
+    max-width: 750px;
 }
 
-/*==============================
-    HEADER
-==============================*/
-
-.header{
-
-    width:100%;
-    position:fixed;
-    top:0;
-    left:0;
-    background:rgba(255,255,255,.90);
-    backdrop-filter:blur(12px);
-    z-index:999;
-
-    border-bottom:1px solid var(--border);
-
+.subtitle {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #0b3c95;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 20px;
 }
 
-/*==============================
-    NAVBAR
-==============================*/
-
-.navbar{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    height:90px;
-
+.main-title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #111;
+    margin-bottom: 25px;
 }
 
-.logo img{
-
-    width:180px;
-
+.description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 40px;
 }
 
-.nav-menu{
-
-    display:flex;
-    list-style:none;
-    gap:40px;
-
+/* الأزرار */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-.nav-menu a{
-
-    text-decoration:none;
-    color:var(--black);
-    font-size:15px;
-    font-weight:500;
-    transition:.3s;
-
+.btn {
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.nav-menu a:hover{
-
-    color:var(--primary);
-
+.btn-primary {
+    background-color: #0b3c95;
+    color: #fff;
+    border: 2px solid #0b3c95;
 }
 
-.nav-btn{
-
-    text-decoration:none;
-    background:var(--primary);
-    color:white;
-    padding:14px 28px;
-    border-radius:50px;
-    transition:.3s;
-    font-weight:600;
-
+.btn-primary:hover {
+    background-color: #082d72;
+    border-color: #082d72;
+    transform: translateY(-2px);
 }
 
-.nav-btn:hover{
-
-    background:#0c2e70;
-
+.btn-secondary {
+    background-color: transparent;
+    color: #0b3c95;
+    border: 2px solid #0b3c95;
 }
 
-/*==============================
-    HERO
-==============================*/
-
-.hero{
-
-    min-height:100vh;
-
-    display:flex;
-    align-items:center;
-
-    padding-top:120px;
-
-    background:
-    linear-gradient(to right,#ffffff 45%,#f7f9fc);
-
+.btn-secondary:hover {
+    background-color: #0b3c95;
+    color: #fff;
+    transform: translateY(-2px);
 }
 
-.hero-content{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    align-items:center;
-
-    gap:70px;
-
+/* التجاوب مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .main-title { font-size: 36px; }
+    .hero-buttons { flex-direction: column; gap: 15px; }
+    .btn { width: 100%; box-sizing: border-box; }
+    .main-header { width: 90%; padding: 20px 5%; }
 }
-
-.hero-subtitle{
-
-    color:var(--primary);
-
-    letter-spacing:3px;
-
-    font-size:14px;
-
-    font-weight:600;
-
-}
-
-.hero h1{
-
-    font-size:68px;
-
-    line-height:1.1;
-
-    margin:20px 0;
-
-    color:var(--black);
-
-}
-
-.hero p{
-
-    font-size:18px;
-
-    color:var(--gray);
-
-    line-height:1.9;
-
-    max-width:560px;
-
-}
-
-/*==============================
-BUTTONS
-==============================*/
-
-.hero-buttons{
-
-    margin-top:40px;
-
-    display:flex;
-
-    gap:20px;
-
-}
-
-.primary-btn{
-
-    background:var(--primary);
-
-    color:white;
-
-    padding:16px 35px;
-
-    text-decoration:none;
-
-    border-radius:50px;
-
-    transition:.3s;
-
-}
-
-.primary-btn:hover{
-
-    transform:translateY(-3px);
-
-    background:#0c2e70;
-
-}
-
-.secondary-btn{
-
-    border:2px solid var(--primary);
-
-    color:var(--primary);
-
-    text-decoration:none;
-
-    padding:16px 35px;
-
-    border-radius:50px;
-
-    transition:.3s;
-
-}
-
-.secondary-btn:hover{
-
-    background:var(--primary);
-
-    color:white;
-
-}
-
-/*==============================
-IMAGE
-==============================*/
-
-.hero-image{
-
-    text-align:right;
-
-}
-
-.hero-image img{
-
-    width:100%;
-
-    max-width:650px;
-
-    border-radius:20px;
-
-    box-shadow:
-
     0 25px 60px rgba(0,0,0,.15);
 
 }
