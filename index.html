@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- إجبار المتصفحات وأنظمة الجوال على إيقاف الوضع المظلم التلقائي وضمان الخلفية البيضاء -->
     <meta name="color-scheme" content="light">
     <title>AHMED HAMID ARCHITECTURE | Home</title>
     
+    <!-- استيراد الخطوط الهندسية الفخمة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- ربط ملف التنسيق الخارجي -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- 1. شريط التنقل العلوي -->
     <header class="main-header">
         <div class="logo">
             <img src="assets/logo.png" alt="Ahmed Hamid Architecture">
@@ -35,6 +39,7 @@
         </div>
     </header>
 
+    <!-- 2. قسم الواجهة الرئيسي (Hero Section) -->
     <section class="hero-section">
         <div class="hero-left-indicator">
             <span>01</span>
@@ -53,6 +58,7 @@
                 </div>
             </div>
             
+            <!-- الاسكتش الهندسي المدمج في الخلفية البيضاء -->
             <div class="hero-sketch-bg"></div>
         </div>
 
@@ -62,6 +68,7 @@
         </div>
     </section>
 
+    <!-- 3. قسم التعريف بالشركة -->
     <section class="about-brief-section">
         <div class="brief-container">
             <div class="brief-title-area">
@@ -75,6 +82,7 @@
         </div>
     </section>
 
+    <!-- 4. قسم خلاصة الأخبار والبوستات التفاعلية (الفارغ تماماً) -->
     <section class="feed-section">
         <div class="feed-header">
             <span class="section-tag">LATEST NEWS</span>
@@ -82,87 +90,19 @@
             <p class="feed-subtitle">Follow our daily updates, site logs, and architectural insights.</p>
         </div>
 
-        <div class="feed-container">
+        <!-- الحاوية الذكية: الكود في الـ JavaScript سيقوم بحقن البوستات هنا تلقائياً فور رفعها -->
+        <div class="feed-container" id="posts-feed-container">
             
-            <article class="feed-post" data-post-id="post_001">
-                <div class="post-meta">
-                    <span class="post-author">Ahmed Hamid</span>
-                    <span class="post-date">July 11, 2026</span>
-                </div>
-                <h3 class="post-title">Breaking Ground: Commercial Tower Structural Design Approved</h3>
-                <p class="post-content">Excited to share the final architectural layouts and engineering approval for our upcoming 15-story commercial complex. The design integrates sustainable solar facades and smart spatial distributions to tackle modern urban challenges.</p>
-                
-                <div class="post-image-container">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Project Update">
-                </div>
-
-                <div class="post-interaction-bar">
-                    <button class="like-btn" id="like-btn-001">
-                        <span class="heart-icon">♥</span> Like (<span class="likes-count">24</span>)
-                    </button>
-                    <span class="comments-toggle">💬 Comments (<span class="comments-count">2</span>)</span>
-                </div>
-
-                <div class="comments-section">
-                    <div class="comments-list">
-                        <div class="comment-item">
-                            <strong>John Doe:</strong>
-                            <p>The clean lines on this structural layout are incredible! Can't wait to see the physical execution.</p>
-                        </div>
-                        <div class="comment-item">
-                            <strong>Sarah M.:</strong>
-                            <p>Excellent optimization of space and natural lighting on the upper decks.</p>
-                        </div>
-                    </div>
-                    <form class="add-comment-form">
-                        <input type="text" placeholder="Your Name" class="comment-user-input" required>
-                        <div class="comment-input-group">
-                            <input type="text" placeholder="Write a comment..." class="comment-text-input" required>
-                            <button type="submit" class="btn-send-comment">Post</button>
-                        </div>
-                    </form>
-                </div>
-            </article>
-
-            <article class="feed-post" data-post-id="post_002">
-                <div class="post-meta">
-                    <span class="post-author">Ahmed Hamid</span>
-                    <span class="post-date">July 05, 2026</span>
-                </div>
-                <h3 class="post-title">The Art of Minimalist Residential Planning</h3>
-                <p class="post-content">A deep dive into our latest residential villa design. Minimalism isn't just about empty space; it's about making sure every structural square meter serves a functional purpose while enhancing emotional comfort.</p>
-                
-                <div class="post-image-container">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Villa Project">
-                </div>
-
-                <div class="post-interaction-bar">
-                    <button class="like-btn" id="like-btn-002">
-                        <span class="heart-icon">♥</span> Like (<span class="likes-count">48</span>)
-                    </button>
-                    <span class="comments-toggle">💬 Comments (<span class="comments-count">1</span>)</span>
-                </div>
-
-                <div class="comments-section">
-                    <div class="comments-list">
-                        <div class="comment-item">
-                            <strong>Engineer Ali:</strong>
-                            <p>Stunning work on the cantilever structures, Ahmed!</p>
-                        </div>
-                    </div>
-                    <form class="add-comment-form">
-                        <input type="text" placeholder="Your Name" class="comment-user-input" required>
-                        <div class="comment-input-group">
-                            <input type="text" placeholder="Write a comment..." class="comment-text-input" required>
-                            <button type="submit" class="btn-send-comment">Post</button>
-                        </div>
-                    </form>
-                </div>
-            </article>
+            <!-- رسالة مؤقتة تظهر فقط إذا لم تكن هناك بوستات مرفوعة في قاعدة البيانات -->
+            <div class="no-posts-message" id="no-posts-alert">
+                <div class="loading-spinner"></div>
+                <p>No updates published yet. New posts will appear here once published by the administrator.</p>
+            </div>
 
         </div>
     </section>
 
+    <!-- 5. الفوتر الاحترافي الموحد -->
     <footer class="footer-section">
         <div class="footer-bottom">
             <div class="footer-logo">
@@ -179,6 +119,7 @@
         </div>
     </footer>
 
+    <!-- ربط ملف البرمجة التفاعلية والتكامل السحابي -->
     <script src="script.js"></script>
 </body>
 </html>
