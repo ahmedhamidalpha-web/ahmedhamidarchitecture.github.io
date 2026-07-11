@@ -9,10 +9,12 @@
 <body>
 
     <header>
-        <h1>أَحْمَدْ حَامِدْ | ARCHITECTURE</h1>
-        <p>المعرض الهندسي التفاعلي وإدارة المشاريع المعمارية</p>
-        <div class="admin-login-wrapper">
-            <button id="adminLoginBtn" class="btn-secondary">لوحة التحكم ⚙️</button>
+        <div class="header-content">
+            <h1>أَحْمَدْ حَامِدْ | ARCHITECTURE</h1>
+            <p>المعرض الهندسي التفاعلي وإدارة المشاريع المعمارية</p>
+            <div class="admin-login-wrapper">
+                <button id="adminLoginBtn" class="btn-secondary">لوحة التحكم ⚙️</button>
+            </div>
         </div>
     </header>
 
@@ -23,44 +25,42 @@
             <form id="adminPublishForm">
                 <div class="form-group">
                     <label>📋 اسم المشروع المعماري:</label>
-                    <input type="text" id="postTitle" class="form-control" placeholder="مثال: فيلا سكنية مودرن - الخرطوم" required>
+                    <input type="text" id="postTitle" class="form-control" placeholder="مثال: فيلا سكنية مودرن" required>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px;">
-                    <div class="form-group">
-                        <label>📍 الموقع الجغرافي:</label>
-                        <input type="text" id="postLocation" class="form-control" placeholder="الموقع">
-                    </div>
-                    <div class="form-group">
-                        <label>📐 مساحة الأرض / المسطح:</label>
-                        <input type="text" id="postArea" class="form-control" placeholder="مثال: 400 متر مربع">
-                    </div>
+                <div class="form-group">
+                    <label>📍 الموقع الجغرافي:</label>
+                    <input type="text" id="postLocation" class="form-control" placeholder="الموقع">
+                </div>
+                <div class="form-group">
+                    <label>📐 مساحة الأرض / المسطح:</label>
+                    <input type="text" id="postArea" class="form-control" placeholder="مثال: 400 متر مربع">
                 </div>
 
                 <div class="form-group">
                     <label>🧱 مكونات وعناصر المشروع:</label>
-                    <input type="text" id="postComponents" class="form-control" placeholder="طوابق، غرف، ملحقات...">
+                    <input type="text" id="postComponents" class="form-control" placeholder="طوابق، غرف...">
                 </div>
                 <div class="form-group">
                     <label>💡 الفكرة التصميمية (Concept):</label>
-                    <textarea id="postConcept" class="form-control" placeholder="شرح لكتل المشروع والتوجه المعماري..."></textarea>
+                    <textarea id="postConcept" class="form-control" placeholder="شرح لكتل المشروع..."></textarea>
                 </div>
                 <div class="form-group">
                     <label>⚠️ التحديات المعمارية والإنشائية:</label>
-                    <textarea id="postChallenges" class="form-control" placeholder="التحديات التي واجهت التصميم وكيف تم حلها..."></textarea>
+                    <textarea id="postChallenges" class="form-control" placeholder="التحديات والحلول..."></textarea>
                 </div>
                 <div class="form-group">
                     <label>🏆 النتيجة المرفقة والحل:</label>
-                    <textarea id="postResult" class="form-control" placeholder="وصف المخرج النهائي للمشروع..."></textarea>
+                    <textarea id="postResult" class="form-control" placeholder="وصف المخرج النهائي..."></textarea>
                 </div>
                 <div class="form-group">
-                    <label>📸 إرفاق الصور والمخططات المباشرة (Google Drive):</label>
-                    <input type="file" id="postFiles" class="form-control" multiple accept="image/*" style="padding: 8px;">
+                    <label>📸 إرفاق الصور والمخططات (Google Drive):</label>
+                    <input type="file" id="postFiles" class="form-control" multiple accept="image/*" style="padding: 5px;">
                 </div>
                 
                 <div style="display: flex; gap: 15px;">
                     <button type="submit" class="btn-primary">نشر المشروع الآن 🚀</button>
-                    <button type="button" class="btn-secondary" onclick="logoutAdmin()" style="background:#444; width:150px; border:none;">خروج 🚪</button>
+                    <button type="button" class="btn-secondary" onclick="logoutAdmin()" style="background:#444; border:none; padding:10px 20px;">خروج 🚪</button>
                 </div>
             </form>
         </section>
