@@ -1,6 +1,8 @@
 const SUPABASE_URL = "https://fzlpqsvcicuvldaxgvcz.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ6bHBxc3ZjaWN1dmxkYXhndmN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3OTM1NjksImV4cCI6MjA5OTM2OTU2OX0.4YTOUuAv9RP5yGz_OF0Sh6ocZLMJa86HrVgAor97Lq8";
 
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyB1u6sBokLdxQEWbh1LOpRxKaYm-6IFYFmhlUIDcPvWJvxBgnGoaojbYLKO1L5RlOp/exec";
+
 async function supabaseFetch(endpoint, options = {}) {
     const headers = {
         "apikey": SUPABASE_ANON_KEY,
@@ -10,6 +12,15 @@ async function supabaseFetch(endpoint, options = {}) {
     };
     const response = await fetch(`${SUPABASE_URL}/rest/v1/${endpoint}`, { ...options, headers });
     return response.ok ? response.json() : Promise.reject(response.statusText);
+}
+
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = error => reject(error);
+    });
 }
 
 window.logoutAdmin = function() {
@@ -57,26 +68,42 @@ document.addEventListener("DOMContentLoaded", () => {
         adminForm.addEventListener("submit", async (e) => {
             e.preventDefault();
             const submitBtn = adminForm.querySelector('button[type="submit"]') || adminForm.querySelector('button');
-            if (submitBtn) submitBtn.disabled = true;
-
-            const fileInput = document.getElementById("postFiles");
-            let driveImageIds = [];
-            if (fileInput && fileInput.files.length > 0) {
-                driveImageIds = Array.from(fileInput.files).map(() => "1" + Math.random().toString(36).substring(2, 10));
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = "جاري رفع الصور للدرايف ونشر المشروع...";
             }
 
-            const projectPayload = {
-                title: document.getElementById("postTitle")?.value || "مشروع معماري جديد",
-                location: document.getElementById("postLocation")?.value || "",
-                plot_area: document.getElementById("postArea")?.value || "",
-                components: document.getElementById("postComponents")?.value || "",
-                design_concept: document.getElementById("postConcept")?.value || "",
-                challenges: document.getElementById("postChallenges")?.value || "",
-                result: document.getElementById("postResult")?.value || "",
-                drive_image_ids: driveImageIds
-            };
+            const fileInput = document.getElementById("postFiles");
+            let driveImageLinks = [];
 
             try {
+                if (fileInput && fileInput.files.length > 0) {
+                    for (let file of fileInput.files) {
+                        const base64Str = await fileToBase64(file);
+                        const uploadRes = await fetch(GOOGLE_SCRIPT_URL, {
+                            method: "POST",
+                            body: JSON.stringify({ file: base64Str, name: file.name, type: file.type })
+                        });
+                        const uploadData = await uploadRes.json();
+                        if (uploadData.status === "success") {
+                            driveImageLinks.push(uploadData.link);
+                        } else {
+                            console.error("جوجل سكربت رجّع خطأ:", uploadData.message);
+                        }
+                    }
+                }
+
+                const projectPayload = {
+                    title: document.getElementById("postTitle")?.value || "مشروع معماري جديد",
+                    location: document.getElementById("postLocation")?.value || "",
+                    plot_area: document.getElementById("postArea")?.value || "",
+                    components: document.getElementById("postComponents")?.value || "",
+                    design_concept: document.getElementById("postConcept")?.value || "",
+                    challenges: document.getElementById("postChallenges")?.value || "",
+                    result: document.getElementById("postResult")?.value || "",
+                    drive_image_ids: driveImageLinks
+                };
+
                 const res = await fetch(`${SUPABASE_URL}/rest/v1/projects`, {
                     method: "POST",
                     headers: {
@@ -89,17 +116,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 
                 if (res.ok) {
-                    alert("تم رفع ونشر المشروع بنجاح! 🎉");
+                    alert("تم نشر المشروع المعماري وصوره بنجاح! 🎉");
                     adminForm.reset();
                     loadProjects();
                 } else {
-                    const errDetails = await res.text();
-                    throw new Error(errDetails);
+                    throw new Error(await res.text());
                 }
             } catch (err) { 
-                alert("خطأ في الرفع: " + err.message); 
+                alert("خطأ في عملية الرفع: " + err.message); 
             } finally { 
-                if (submitBtn) submitBtn.disabled = false; 
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "نشر المشروع الآن 🚀";
+                }
             }
         });
     }
@@ -115,12 +144,11 @@ async function loadProjects() {
             const isAdmin = localStorage.getItem("isAdmin") === "true";
             const commentsHtml = (project.comments || []).map(c => `<p><strong>👤 ${c.username}:</strong> ${c.comment_text}</p>`).join('');
             
-            // آلية إظهار الصور أو تجهيز مكانها المعماري
             let imagesHtml = "";
             if (project.drive_image_ids && project.drive_image_ids.length > 0) {
-                imagesHtml = `<div class="project-gallery" style="display:flex; gap:10px; margin-top:15px; flex-wrap:wrap;">`;
-                project.drive_image_ids.forEach(() => {
-                    imagesHtml += `<div style="width:120px; height:90px; background:#eee; display:flex; align-items:center; justify-content:center; border-radius:4px; font-size:11px; color:#777; border:1px dashed #ccc;">🖼️ صورة مرفوعة</div>`;
+                imagesHtml = `<div class="project-gallery" style="display:flex; gap:15px; margin-top:15px; flex-wrap:wrap;">`;
+                project.drive_image_ids.forEach(url => {
+                    imagesHtml += `<img src="${url}" alt="صورة المشروع" style="max-width:100%; width:280px; height:auto; border-radius:6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); object-fit: cover;">`;
                 });
                 imagesHtml += `</div>`;
             }
@@ -173,19 +201,12 @@ async function deleteProject(id) {
         try {
             const res = await fetch(`${SUPABASE_URL}/rest/v1/projects?id=eq.${id}`, {
                 method: "DELETE",
-                headers: { 
-                    "apikey": SUPABASE_ANON_KEY, 
-                    "Authorization": `Bearer ${SUPABASE_ANON_KEY}` 
-                }
+                headers: { "apikey": SUPABASE_ANON_KEY, "Authorization": `Bearer ${SUPABASE_ANON_KEY}` }
             });
             if(res.ok) {
                 alert("تم حذف المشروع بنجاح من السيرفر!");
                 loadProjects();
-            } else {
-                alert("فشل الحذف من السيرفر، تحقق من الصلاحيات.");
             }
-        } catch(e) {
-            alert("حدث خطأ أثناء الحذف");
-        }
+        } catch(e) { alert("حدث خطأ أثناء الحذف"); }
     }
 }
