@@ -1,4 +1,3 @@
-/* إعدادات الخطوط والألوان الأساسية */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
 
 :root {
@@ -24,41 +23,46 @@ body {
     direction: rtl;
 }
 
-/* الهيدر (رأس الموقع) */
+/* هيدر مرن يمنع تداخل الكلمات */
 header {
     background-color: var(--primary-color);
     color: #fff;
-    padding: 30px 20px;
+    padding: 25px 20px;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    position: relative;
+}
+
+header .header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 header h1 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
+    letter-spacing: 0.5px;
 }
 
 header p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #aaa;
     font-weight: 300;
 }
 
-/* زر دخول الإدارة */
+/* زر التحكم أسفل الوصف لمنع التداخل */
 .admin-login-wrapper {
-    position: absolute;
-    top: 30px;
-    left: 20px;
+    margin-top: 5px;
 }
 
 .btn-secondary {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     color: #fff;
-    padding: 6px 14px;
+    padding: 6px 16px;
     font-size: 0.85rem;
     cursor: pointer;
     border-radius: 4px;
@@ -68,205 +72,160 @@ header p {
 .btn-secondary:hover {
     background: #fff;
     color: var(--primary-color);
-    border-color: #fff;
 }
 
-/* الحاوية الرئيسية */
 .container {
     max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: 30px auto;
+    padding: 0 15px;
 }
 
-/* لوحة تحكم الأدمن (الفورم) */
+/* لوحة التحكم */
 #adminPanelSection {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 30px;
-    margin-bottom: 40px;
+    padding: 20px;
+    margin-bottom: 30px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.02);
 }
 
 #adminPanelSection h3 {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-    font-size: 1.4rem;
+    padding-bottom: 8px;
+    font-size: 1.2rem;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .form-control {
-    width: 100px;
-    min-width: 100%;
-    padding: 12px;
+    width: 100%;
+    padding: 10px;
     border: 1px solid var(--border-color);
     background: #fafafa;
     border-radius: 6px;
     font-size: 0.95rem;
-    transition: all 0.3s ease;
 }
 
 .form-control:focus {
     outline: none;
     border-color: var(--primary-color);
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.03);
 }
 
 textarea.form-control {
-    min-height: 100px;
-    resize: vertical;
+    min-height: 90px;
 }
 
 .btn-primary {
     background: var(--primary-color);
     color: #fff;
-    padding: 12px 30px;
+    padding: 12px;
     border: none;
     border-radius: 6px;
     font-weight: 600;
     cursor: pointer;
     font-size: 1rem;
     width: 100%;
-    transition: background 0.3s ease;
 }
 
-.btn-primary:hover {
-    background: #333;
-}
-
-/* تايم لاين التغذية البصرية للمشاريع (Feed Container) */
+/* حاوية المشاريع */
 #posts-feed-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
-/* كارت المشروع الاحترافي */
+/* كارت المشروع */
 .post-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 35px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.01);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.post-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.01);
 }
 
 .post-card h2 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: var(--primary-color);
-    margin-bottom: 20px;
-    padding-bottom: 12px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
     border-bottom: 1px solid var(--border-color);
 }
 
-/* تفاصيل المشروع الهندسي */
 .project-details-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-bottom: 20px;
     background: #fafafa;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
 }
 
 .detail-item {
-    font-size: 0.95rem;
-}
-
-.detail-item strong {
-    color: #000;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
 }
 
 .project-text-block {
-    margin-bottom: 15px;
-    font-size: 1rem;
-    text-align: justify;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
 }
 
 .project-text-block strong {
     display: block;
     color: var(--primary-color);
-    margin-bottom: 4px;
-    font-size: 1.05rem;
+    margin-bottom: 2px;
 }
 
-/* معرض الصور الفخم */
+/* المعرض */
 .project-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
-    margin: 25px 0;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
 }
 
 .project-gallery img {
     width: 100%;
-    height: 220px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
-    transition: transform 0.4s ease;
-    cursor: pointer;
-}
-
-.project-gallery img:hover {
-    transform: scale(1.03);
-}
-
-/* قسم التعليقات والمناقشات */
-.comments-section {
-    margin-top: 30px;
-    border-top: 1px solid var(--border-color);
-    padding-top: 20px;
-}
-
-.comments-section h4 {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-    color: var(--primary-color);
-}
-
-.comments-list {
-    max-height: 200px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-    background: #fdfdfd;
-    padding: 10px;
     border-radius: 6px;
 }
 
+/* التعليقات */
+.comments-section {
+    margin-top: 20px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+}
+
+.comments-list {
+    background: #fdfdfd;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
 .comment-item {
-    padding: 10px;
+    padding: 8px;
     border-bottom: 1px dashed var(--border-color);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
-.comment-item:last-child {
-    border-bottom: none;
-}
-
-/* فورم التعليق الجديد */
 .comment-form {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .comment-form input {
@@ -276,56 +235,37 @@ textarea.form-control {
     font-size: 0.9rem;
 }
 
-.comment-form .input-name {
-    width: 150px;
-}
-
-.comment-form .input-text {
-    flex: 1;
-}
-
 .btn-comment {
     background: var(--primary-color);
     color: #fff;
     border: none;
-    padding: 0 20px;
+    padding: 10px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.2s;
 }
 
-.btn-comment:hover {
-    background: #333;
-}
-
-/* زر الحذف */
 .btn-delete {
     background: #dc3545;
     color: #fff;
     border: none;
     padding: 8px 16px;
-    margin-top: 20px;
-    border-radius: 6px;
+    margin-top: 15px;
+    border-radius: 4px;
     cursor: pointer;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: background 0.2s;
 }
 
-.btn-delete:hover {
-    background: #bd2130;
-}
-
-/* متجاوب مع الموبايل */
-@media (max-width: 600px) {
+@media (min-width: 600px) {
     .comment-form {
-        flex-direction: column;
+        flex-direction: row;
     }
     .comment-form .input-name {
-        width: 100%;
+        width: 150px;
+    }
+    .comment-form .input-text {
+        flex: 1;
     }
     header h1 {
-        font-size: 1.7rem;
+        font-size: 2.2rem;
     }
 }
