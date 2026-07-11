@@ -1,8 +1,6 @@
-// 1. إعدادات المفاتيح والربط بقاعدة البيانات
 const SUPABASE_URL = "https://fzlpqsvcicuvldaxgvcz.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ6bHBxc3ZjaWN1dmxkYXhndmN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3OTM1NjksImV4cCI6MjA5OTM2OTU2OX0.4YTOUuAv9RP5yGz_OF0Sh6ocZLMJa86HrVgAor97Lq8";
 
-// دالة جلب البيانات العامة من السحاب
 async function supabaseFetch(endpoint, options = {}) {
     const headers = {
         "apikey": SUPABASE_ANON_KEY,
@@ -14,7 +12,6 @@ async function supabaseFetch(endpoint, options = {}) {
     return response.ok ? response.json() : Promise.reject(response.statusText);
 }
 
-// دالة تسجيل الخروج الصريحة (تُستدعى من أي مكان)
 window.logoutAdmin = function() {
     localStorage.removeItem("isAdmin");
     alert("تم تسجيل الخروج بنجاح يا باشمهندس!");
@@ -24,13 +21,11 @@ window.logoutAdmin = function() {
 document.addEventListener("DOMContentLoaded", () => {
     loadProjects();
 
-    // تشغيل لوحة التحكم للأدمن لو مسجل دخول
     const adminSection = document.getElementById("adminPanelSection");
     if (localStorage.getItem("isAdmin") === "true" && adminSection) {
         adminSection.style.display = "block";
     }
 
-    // ربط أزرار الخروج بشكل مرن جداً داخل اللوحة
     if (adminSection) {
         const logoutButtons = adminSection.querySelectorAll("button");
         logoutButtons.forEach(btn => {
@@ -44,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // زرار تسجيل الدخول
     const loginBtn = document.getElementById("adminLoginBtn");
     if (loginBtn) {
         loginBtn.addEventListener("click", () => {
@@ -58,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // فورم رفع المنشورات المعمارية
     const adminForm = document.getElementById("adminPublishForm");
     if (adminForm) {
         adminForm.addEventListener("submit", async (e) => {
@@ -66,14 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const submitBtn = adminForm.querySelector('button[type="submit"]') || adminForm.querySelector('button');
             if (submitBtn) submitBtn.disabled = true;
 
-            // توليد الـ IDs للصور المرفوعة كملفات للربط مع درايف لاحقاً
             const fileInput = document.getElementById("postFiles");
             let driveImageIds = [];
             if (fileInput && fileInput.files.length > 0) {
                 driveImageIds = Array.from(fileInput.files).map(() => "1" + Math.random().toString(36).substring(2, 10));
             }
 
-            // 📋 التوليف البرمجي الصارم لمطابقة أعمدة الـ Database بالظبط (Snake_Case)
             const projectPayload = {
                 title: document.getElementById("postTitle")?.value || "مشروع معماري جديد",
                 location: document.getElementById("postLocation")?.value || "",
@@ -114,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// دالة العرض المتكاملة
 async function loadProjects() {
     const container = document.getElementById("posts-feed-container");
     if (!container) return;
@@ -125,6 +115,16 @@ async function loadProjects() {
             const isAdmin = localStorage.getItem("isAdmin") === "true";
             const commentsHtml = (project.comments || []).map(c => `<p><strong>👤 ${c.username}:</strong> ${c.comment_text}</p>`).join('');
             
+            // آلية إظهار الصور أو تجهيز مكانها المعماري
+            let imagesHtml = "";
+            if (project.drive_image_ids && project.drive_image_ids.length > 0) {
+                imagesHtml = `<div class="project-gallery" style="display:flex; gap:10px; margin-top:15px; flex-wrap:wrap;">`;
+                project.drive_image_ids.forEach(() => {
+                    imagesHtml += `<div style="width:120px; height:90px; background:#eee; display:flex; align-items:center; justify-content:center; border-radius:4px; font-size:11px; color:#777; border:1px dashed #ccc;">🖼️ صورة مرفوعة</div>`;
+                });
+                imagesHtml += `</div>`;
+            }
+
             return `
                 <div class="post-card" style="border:1px solid #eee; padding:25px; margin-bottom:25px; background:#fff; border-radius:6px; box-shadow:0 2px 5px rgba(0,0,0,0.02);">
                     <h2 style="border-bottom:1px solid #000; padding-bottom:8px;">📋 اسم المشروع: ${project.title}</h2>
@@ -135,6 +135,8 @@ async function loadProjects() {
                     <p>⚠️ <strong>التحديات:</strong> ${project.challenges || 'لا توجد تفاصيل'}</p>
                     <p>🏆 <strong>النتيجة:</strong> ${project.result || 'لا توجد تفاصيل'}</p>
                     
+                    ${imagesHtml}
+                    
                     <div style="margin-top:20px; background:#fdfdfd; padding:15px; border-top:1px dashed #ccc;">
                         <h4>💬 المناقشات والتعليقات:</h4>
                         <div id="comments-list-${project.id}">${commentsHtml || '<p style="color:#aaa; font-size:13px;">لا توجد تعليقات بعد.</p>'}</div>
@@ -144,7 +146,7 @@ async function loadProjects() {
                         <input type="text" id="text-${project.id}" placeholder="اكتب تعليقك..." style="padding:8px; border:1px solid #ccc; flex:1;">
                         <button onclick="submitComment(${project.id})" style="padding:8px 20px; background:#000; color:#fff; border:none; cursor:pointer; font-weight:600;">تعليق 💬</button>
                     </div>
-                    ${isAdmin ? `<button onclick="deleteProject(${project.id})" style="background:#cc0000; color:#white; border:none; padding:8px 15px; margin-top:20px; cursor:pointer; font-weight:600;">حذف المشروع 🗑️</button>` : ''}
+                    ${isAdmin ? `<button onclick="deleteProject(${project.id})" style="background:#cc0000; color:#fff; border:none; padding:8px 15px; margin-top:20px; cursor:pointer; font-weight:600; border-radius:4px;">حذف المشروع 🗑️</button>` : ''}
                 </div>
             `;
         }).join('');
@@ -168,10 +170,22 @@ async function submitComment(projectId) {
 
 async function deleteProject(id) {
     if (confirm("هل أنت متأكد من حذف هذا المشروع نهائياً؟")) {
-        await fetch(`${SUPABASE_URL}/rest/v1/projects?id=eq.${id}`, {
-            method: "DELETE",
-            headers: { "apikey": SUPABASE_ANON_KEY, "Authorization": `Bearer ${SUPABASE_ANON_KEY}` }
-        });
-        loadProjects();
+        try {
+            const res = await fetch(`${SUPABASE_URL}/rest/v1/projects?id=eq.${id}`, {
+                method: "DELETE",
+                headers: { 
+                    "apikey": SUPABASE_ANON_KEY, 
+                    "Authorization": `Bearer ${SUPABASE_ANON_KEY}` 
+                }
+            });
+            if(res.ok) {
+                alert("تم حذف المشروع بنجاح من السيرفر!");
+                loadProjects();
+            } else {
+                alert("فشل الحذف من السيرفر، تحقق من الصلاحيات.");
+            }
+        } catch(e) {
+            alert("حدث خطأ أثناء الحذف");
+        }
     }
 }
