@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة المشاريع المعمارية | أحمد حامد</title>
+    <title>Ahmed Hamid Architecture | المنصة الهندسية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- شريط الخانات العلوي المطور باللوقو والاسم الرسمي -->
-<nav class="main-navbar">
-    <div class="nav-container">
-        <div class="logo-wrapper">
-            <!-- استدعاء اللوقو الخاص بك من مجلد assets -->
-            <img src="assets/logo.png" alt="Ahmed Hamid Architecture Logo" class="company-logo-img">
-            <span class="company-name">Ahmed Hamid Architecture</span>
+    <!-- شريط الخانات العلوي (Navbar) -->
+    <nav class="main-navbar">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <!-- اللوقو فقط بدون نص خارجي مشوه -->
+                <img src="assets/logo.png" alt="Ahmed Hamid Architecture" class="company-logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#posts-feed-container" class="active">المشاريع</a></li>
+                <li><button id="adminLoginBtn" class="btn-nav-admin">لوحة التحكم ⚙️</button></li>
+            </ul>
         </div>
-        <ul class="nav-links">
-            <li><a href="#posts-feed-container" class="active">المشاريع</a></li>
-            <li><button id="adminLoginBtn" class="btn-nav-admin">لوحة التحكم ⚙️</button></li>
-        </ul>
-    </div>
-</nav>
+    </nav>
 
-
+    <!-- الهيدر الترحيبي (Hero Section) -->
     <header class="hero-header">
         <div class="header-content">
             <h1>المعرض الهندسي التفاعلي</h1>
@@ -31,8 +30,10 @@
         </div>
     </header>
 
+    <!-- الحاوية الرئيسية للمحتوى -->
     <div class="container">
         
+        <!-- لوحة التحكم (مخفية افتراضياً وتظهر بمسطرة برمجية عند الضغط) -->
         <section id="adminPanelSection" style="display: none;">
             <h3>📐 نشر وثيقة مشروع معماري جديد</h3>
             <form id="adminPublishForm">
@@ -56,18 +57,22 @@
                     <label>🧱 مكونات وعناصر المشروع:</label>
                     <input type="text" id="postComponents" class="form-control" placeholder="طوابق، غرف...">
                 </div>
+                
                 <div class="form-group">
                     <label>💡 الفكرة التصميمية (Concept):</label>
                     <textarea id="postConcept" class="form-control" placeholder="شرح لكتل المشروع والتوجه المعماري..."></textarea>
                 </div>
+                
                 <div class="form-group">
                     <label>⚠️ التحديات المعمارية والإنشائية:</label>
                     <textarea id="postChallenges" class="form-control" placeholder="التحديات وكيف تم حلها..."></textarea>
                 </div>
+                
                 <div class="form-group">
                     <label>🏆 النتيجة المرفقة والحل:</label>
                     <textarea id="postResult" class="form-control" placeholder="وصف المخرج النهائي للمشروع..."></textarea>
                 </div>
+                
                 <div class="form-group">
                     <label>📸 إرفاق الصور والمخططات المباشرة:</label>
                     <input type="file" id="postFiles" class="form-control" multiple accept="image/*" style="padding: 8px;">
@@ -80,13 +85,18 @@
             </form>
         </section>
 
+        <!-- قسم التغذية البصرية وعرض المشاريع للعملاء -->
         <main id="posts-feed-container">
-            </main>
+            <!-- جافا سكربت هيصب الكروت الاحترافية هنا تلقائياً -->
+        </main>
     </div>
 
+    <!-- الفوتر الأزرق الفخم في أسفل الموقع -->
     <footer class="main-footer">
         <div class="footer-content">
-            <p>© 2026 جميع الحقوق محفوظة | شركة أحمد حامد للتصميم المعماري والاستشارات الهندسية</p>
+            <!-- إضافة اللوقو في الفوتر بشكل مصغر وأنيق -->
+            <img src="assets/logo.png" alt="Ahmed Hamid Architecture" class="footer-logo-img">
+            <p>© 2026 جميع الحقوق محفوظة | أحمد حامد للعمارة والإنشاء</p>
             <span class="footer-sub">جودة إنشائية وفلسفة تصميمية مبتكرة</span>
         </div>
     </footer>
