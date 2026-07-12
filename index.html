@@ -8,13 +8,23 @@
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <h1>أَحْمَدْ حَامِدْ | ARCHITECTURE</h1>
-            <p>المعرض الهندسي التفاعلي وإدارة المشاريع المعمارية</p>
-            <div class="admin-login-wrapper">
-                <button id="adminLoginBtn" class="btn-secondary">لوحة التحكم ⚙️</button>
+    <nav class="main-navbar">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <div class="company-logo">AH</div>
+                <span class="company-name">أحمد حامد | للعمارة والإنشاء</span>
             </div>
+            <ul class="nav-links">
+                <li><a href="#posts-feed-container" class="active">المشاريع</a></li>
+                <li><button id="adminLoginBtn" class="btn-nav-admin">لوحة التحكم ⚙️</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero-header">
+        <div class="header-content">
+            <h1>المعرض الهندسي التفاعلي</h1>
+            <p>توثيق الفكرة التصميمية، التحديات الإنتاجية، والحلول المعمارية للمشاريع</p>
         </div>
     </header>
 
@@ -28,13 +38,15 @@
                     <input type="text" id="postTitle" class="form-control" placeholder="مثال: فيلا سكنية مودرن" required>
                 </div>
                 
-                <div class="form-group">
-                    <label>📍 الموقع الجغرافي:</label>
-                    <input type="text" id="postLocation" class="form-control" placeholder="الموقع">
-                </div>
-                <div class="form-group">
-                    <label>📐 مساحة الأرض / المسطح:</label>
-                    <input type="text" id="postArea" class="form-control" placeholder="مثال: 400 متر مربع">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>📍 الموقع الجغرافي:</label>
+                        <input type="text" id="postLocation" class="form-control" placeholder="الموقع">
+                    </div>
+                    <div class="form-group">
+                        <label>📐 مساحة الأرض / المسطح:</label>
+                        <input type="text" id="postArea" class="form-control" placeholder="مثال: 400 متر مربع">
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -43,24 +55,24 @@
                 </div>
                 <div class="form-group">
                     <label>💡 الفكرة التصميمية (Concept):</label>
-                    <textarea id="postConcept" class="form-control" placeholder="شرح لكتل المشروع..."></textarea>
+                    <textarea id="postConcept" class="form-control" placeholder="شرح لكتل المشروع والتوجه المعماري..."></textarea>
                 </div>
                 <div class="form-group">
                     <label>⚠️ التحديات المعمارية والإنشائية:</label>
-                    <textarea id="postChallenges" class="form-control" placeholder="التحديات والحلول..."></textarea>
+                    <textarea id="postChallenges" class="form-control" placeholder="التحديات وكيف تم حلها..."></textarea>
                 </div>
                 <div class="form-group">
                     <label>🏆 النتيجة المرفقة والحل:</label>
-                    <textarea id="postResult" class="form-control" placeholder="وصف المخرج النهائي..."></textarea>
+                    <textarea id="postResult" class="form-control" placeholder="وصف المخرج النهائي للمشروع..."></textarea>
                 </div>
                 <div class="form-group">
-                    <label>📸 إرفاق الصور والمخططات (Google Drive):</label>
-                    <input type="file" id="postFiles" class="form-control" multiple accept="image/*" style="padding: 5px;">
+                    <label>📸 إرفاق الصور والمخططات المباشرة:</label>
+                    <input type="file" id="postFiles" class="form-control" multiple accept="image/*" style="padding: 8px;">
                 </div>
                 
-                <div style="display: flex; gap: 15px;">
+                <div class="form-buttons">
                     <button type="submit" class="btn-primary">نشر المشروع الآن 🚀</button>
-                    <button type="button" class="btn-secondary" onclick="logoutAdmin()" style="background:#444; border:none; padding:10px 20px;">خروج 🚪</button>
+                    <button type="button" class="btn-logout" onclick="logoutAdmin()">خروج 🚪</button>
                 </div>
             </form>
         </section>
@@ -68,6 +80,13 @@
         <main id="posts-feed-container">
             </main>
     </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>© 2026 جميع الحقوق محفوظة | شركة أحمد حامد للتصميم المعماري والاستشارات الهندسية</p>
+            <span class="footer-sub">جودة إنشائية وفلسفة تصميمية مبتكرة</span>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
