@@ -61,5 +61,21 @@ async function loadProjects() {
         }).join('');
     } catch (err) { 
         container.innerHTML = '<p style="text-align:center; color:#ef4444;">حدث خطأ أثناء الاتصال بقاعدة البيانات وسحب المشاريع.</p>';
+    // تفعيل زر لوحة التحكم لإظهار وإخفاء الفورم
+document.addEventListener("DOMContentLoaded", () => {
+    const adminBtn = document.getElementById("adminLoginBtn");
+    const adminSection = document.getElementById("adminPanelSection");
+
+    if (adminBtn && adminSection) {
+        adminBtn.addEventListener("click", () => {
+            if (adminSection.style.display === "none") {
+                adminSection.style.display = "block"; // إظهار لوحة التحكم
+                adminSection.scrollIntoView({ behavior: 'smooth' }); // انتقال سلس للوحة
+            } else {
+                adminSection.style.display = "none"; // إخفائها في حال الضغط مرة أخرى
+            }
+        });
     }
+});
+
 }
