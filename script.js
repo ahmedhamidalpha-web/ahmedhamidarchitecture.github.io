@@ -3,47 +3,39 @@ const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwFd_q0GcRNc4qEI1NBlHAJxE_cLlmNzdTRXKJkO1wiPt6TUj05aSUWL76uM1YeD3hJ/exec";
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// 1. جلب وعرض المشاريع + القلب + التعليقات
+// جلب المشاريع
 async function renderProjects() {
-  const { data } = await supabase.from('projects').select('*').order('created_at', { ascending: false });
   const container = document.getElementById('posts-feed-container');
+  if(!container) return;
+  const { data, error } = await supabase.from('projects').select('*').order('created_at', { ascending: false });
+  if(error){ container.innerHTML = "خطأ في تحميل المشاريع"; return; }
   container.innerHTML = data.map(p => `
     <div class="post-card">
       <h3>${p.title}</h3>
-      <div class="project-gallery">${p.images ? p.images.map(img => `<img src="${img}">`).join('') : ''}</div>
-      <div class="project-details-grid">
-        <div><strong>📍 الموقع:</strong> ${p.location}</div>
-        <div><strong>📐 المساحة:</strong> ${p.area}</div>
-      </div>
-      <p><strong>الفكرة:</strong> ${p.concept}</p>
-      <button onclick="likeProject(${p.id}, ${p.likes})" class="btn-like">❤️ ${p.likes}</button>
-      <div class="comments-section">
-        <input type="text" id="comment-${p.id}" placeholder="اضف تعليق...">
-        <button onclick="addComment(${p.id})">ارسال</button>
-      </div>
+      <p><strong>📍 الموقع:</strong> ${p.location || '-'}</p>
+      <p><strong>📐 المساحة:</strong> ${p.area || '-'}</p>
+      <p>${p.concept || ''}</p>
+      <button onclick="likeProject(${p.id}, ${p.likes})" class="btn-primary">❤️ ${p.likes}</button>
     </div>
   `).join('');
 }
 
-// 2. ارسال طلب العميل للايميل عبر Apps Script
-document.getElementById('clientRequestForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const data = {
-    name: clientName.value, phone: clientPhone.value, email: clientEmail.value,
-    location: projectLocation.value, area: projectArea.value, details: clientDetails.value, type: 'client_request'
-  };
-  await fetch(APPS_SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) });
-  alert("تم استلام طلبك. سنتواصل معك قريبا");
-  e.target.reset();
-});
+// الاعجاب
+async function likeProject(id, currentLikes){
+  await supabase.from('projects').update({ likes: currentLikes + 1 }).eq('id', id);
+  renderProjects();
+}
 
-// 3. تسجيل الدخول للادمن
-document.getElementById('submitLoginBtn').addEventListener('click', () => {
-    if(loginUsername.value === "ahmed" && loginPassword.value === "123"){
-        sessionStorage.setItem('isAdminLoggedIn', 'true');
-        document.getElementById('adminPanelSection').style.display = 'block';
-        document.getElementById('loginFormSection').style.display = 'none';
-    }
-});
+// ارسال فورم التواصل
+const form = document.getElementById('clientRequestForm');
+if(form){
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = { name: clientName.value, phone: clientPhone.value, details: clientDetails.value, type: 'client_request' };
+    await fetch(APPS_SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) });
+    alert("تم استلام طلبك. سنتواصل معك قريبا");
+    form.reset();
+  });
+}
 
-renderProjects();
+document.addEventListener('DOMContentLoaded', renderProjects);
