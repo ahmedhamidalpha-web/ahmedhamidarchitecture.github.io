@@ -1,23 +1,20 @@
 /* -------------------------------------------------------------
-   🎨 Ahmed Hamid Architecture - Official Stylesheet (V2.0)
+   🎨 Ahmed Hamid Architecture - Official Stylesheet (V2.1)
    ------------------------------------------------------------- */
 
-/* 1️⃣ استيراد الخطوط الإشراقية للـ Typography */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
 
-/* 2️⃣ المتغيرات المعمارية للألوان والهوية البصرية */
 :root {
-    --primary-blue: #0a192f;       /* الأزرق الداكن الأساسي */
-    --accent-blue: #172a45;        /* أزرق الهيدر والفوتر */
-    --bg-light: #f8fafc;           /* خلفية الموقع المريحة للعين */
-    --card-bg: #ffffff;            /* خلفية كروت المشاريع والفورم */
-    --text-dark: #1e293b;          /* لون النصوص الأساسية */
-    --text-muted: #64748b;         /* لون النصوص الثانوية والتلميحات */
-    --border-color: #e2e8f0;       /* لون الفواصل والحدود */
+    --primary-blue: #0a192f;       
+    --accent-blue: #172a45;        
+    --bg-light: #f8fafc;           
+    --card-bg: #ffffff;            
+    --text-dark: #1e293b;          
+    --text-muted: #64748b;         
+    --border-color: #e2e8f0;       
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 3️⃣ الإعدادات العامة للموقع (Reset & Base) */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -29,13 +26,13 @@ body {
     background-color: var(--bg-light);
     color: var(--text-dark);
     line-height: 1.6;
-    direction: rtl; /* توجيه هندسي صحيح للغة العربية */
+    direction: rtl;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* إجبار الفوتر على البقاء في الأسفل دائماً */
+    min-height: 100vh;
 }
 
-/* 4️⃣ شريط الخانات العلوي (Navbar) */
+/* شريط الخانات العلوي (Navbar) */
 .main-navbar {
     background-color: var(--primary-blue);
     padding: 12px 20px;
@@ -56,18 +53,24 @@ body {
 .logo-wrapper {
     display: flex;
     align-items: center;
+    gap: 12px;
 }
 
+/* تحجيم ومنع اللوقو من الفرش في الشاشة */
 .company-logo-img {
-    height: 45px; /* الارتفاع المثالي لظهور كتل اللوقو بوضوح */
+    height: 42px; 
     width: auto;
     object-fit: contain;
     display: block;
     transition: var(--transition);
 }
 
-.company-logo-img:hover {
-    transform: scale(1.03);
+.company-name-text {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .nav-links {
@@ -82,7 +85,6 @@ body {
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: var(--transition);
 }
 
 .nav-links a.active {
@@ -96,7 +98,6 @@ body {
     color: #ffffff;
     padding: 6px 14px;
     font-size: 0.85rem;
-    font-weight: 500;
     border-radius: 6px;
     cursor: pointer;
     transition: var(--transition);
@@ -105,23 +106,20 @@ body {
 .btn-nav-admin:hover {
     background: #ffffff;
     color: var(--primary-blue);
-    border-color: #ffffff;
 }
 
-/* 5️⃣ الهيدر الترحيبي الفخم (Hero Header) */
+/* الهيدر الترحيبي (Hero) */
 .hero-header {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
     color: #ffffff;
     padding: 40px 20px;
     text-align: center;
-    border-bottom: 4px solid rgba(255, 255, 255, 0.05);
 }
 
 .hero-header h1 {
     font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 10px;
-    letter-spacing: -0.5px;
 }
 
 .hero-header p {
@@ -129,19 +127,18 @@ body {
     color: #cbd5e1;
     max-width: 600px;
     margin: 0 auto;
-    font-weight: 300;
 }
 
-/* 6️⃣ الحاوية الرئيسية للمحتوى */
+/* الحاوية الرئيسية */
 .container {
     width: 100%;
-    max-width: 800px; /* عرض ممتاز ومريح جداً للقراءة والمشاهدة على الموبايل والكمبيوتر */
+    max-width: 800px;
     margin: 25px auto;
     padding: 0 20px;
-    flex: 1; /* دفع الفوتر لآخر الشاشة لأسفل هندسياً */
+    flex: 1;
 }
 
-/* 7️⃣ فورم لوحة التحكم (Admin Panel) */
+/* فورم لوحة التحكم */
 #adminPanelSection {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -149,12 +146,6 @@ body {
     padding: 25px;
     margin-bottom: 35px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
-    animation: fadeIn 0.4s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 #adminPanelSection h3 {
@@ -180,7 +171,6 @@ body {
     margin-bottom: 6px;
     font-weight: 600;
     font-size: 0.85rem;
-    color: var(--text-dark);
 }
 
 .form-control {
@@ -190,15 +180,6 @@ body {
     background: #f8fafc;
     border-radius: 8px;
     font-size: 0.9rem;
-    color: var(--text-dark);
-    transition: var(--transition);
-}
-
-.form-control:focus {
-    outline: none;
-    border-color: var(--primary-blue);
-    background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(10, 25, 47, 0.05);
 }
 
 textarea.form-control {
@@ -206,11 +187,9 @@ textarea.form-control {
     resize: vertical;
 }
 
-/* أزرار الفورم */
 .form-buttons {
     display: flex;
     gap: 10px;
-    margin-top: 25px;
 }
 
 .btn-primary {
@@ -219,15 +198,9 @@ textarea.form-control {
     color: #ffffff;
     border: none;
     padding: 12px;
-    font-size: 0.95rem;
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
-    transition: var(--transition);
-}
-
-.btn-primary:hover {
-    background: var(--accent-blue);
 }
 
 .btn-logout {
@@ -235,18 +208,12 @@ textarea.form-control {
     color: #ef4444;
     border: 1px solid #e2e8f0;
     padding: 12px 20px;
-    font-size: 0.9rem;
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
-    transition: var(--transition);
 }
 
-.btn-logout:hover {
-    background: #fee2e2;
-}
-
-/* 8️⃣ كروت عرض المشاريع (Posts Feed) */
+/* كروت عرض المشاريع */
 #posts-feed-container {
     display: flex;
     flex-direction: column;
@@ -258,7 +225,6 @@ textarea.form-control {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 }
 
 .post-card h2 {
@@ -269,7 +235,6 @@ textarea.form-control {
     padding-right: 10px;
 }
 
-/* شبكة تفاصيل المشروع (الموقع، المساحة، المكونات) */
 .project-details-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -281,51 +246,15 @@ textarea.form-control {
     margin-bottom: 20px;
 }
 
-.detail-item {
-    font-size: 0.85rem;
-    color: var(--text-dark);
-}
+.detail-item { font-size: 0.85rem; }
 
-.detail-item strong {
-    color: var(--text-muted);
-}
+.project-text-block { margin-bottom: 20px; font-size: 0.95rem; }
+.project-text-block strong { display: block; color: var(--primary-blue); }
 
-/* الكتل النصية للمفاهيم والتحديات */
-.project-text-block {
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-    text-align: justify;
-}
+.project-gallery { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.project-gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; }
 
-.project-text-block strong {
-    display: block;
-    color: var(--primary-blue);
-    margin-bottom: 4px;
-    font-size: 0.9rem;
-}
-
-/* معرض الصور الفنية والمخططات المعمارية */
-.project-gallery {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    margin-top: 15px;
-}
-
-.project-gallery img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover; /* يمنع تمطيط الصور البرمجية */
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
-}
-
-.project-gallery img:hover {
-    transform: scale(1.01);
-}
-
-/* 9️⃣ الفوتر الاحترافي (Footer) */
+/* الفوتر */
 .main-footer {
     background-color: var(--accent-blue);
     color: #94a3b8;
@@ -335,13 +264,8 @@ textarea.form-control {
     border-top: 4px solid var(--primary-blue);
 }
 
-.footer-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
 .footer-logo-img {
-    height: 65px; /* يبرز كتلة اللوقو في الختام بشكل ممتاز */
+    height: 60px;
     width: auto;
     object-fit: contain;
     margin-bottom: 15px;
@@ -351,22 +275,19 @@ textarea.form-control {
     font-size: 0.85rem;
     color: #e2e8f0;
     margin-bottom: 5px;
-    font-weight: 500;
 }
 
-.footer-sub {
-    font-size: 0.75rem;
-    color: #64748b;
-    display: block;
+.footer-sub { font-size: 0.75rem; color: #64748b; display: block; }
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .company-name-text { font-size: 0.95rem; }
 }
 
-/* 🔟 الشاشات الكبيرة والكمبيوتر (Responsiveness & Grid Tuning) */
 @media (min-width: 650px) {
     .hero-header { padding: 55px 20px; }
     .hero-header h1 { font-size: 2.2rem; }
-    .hero-header p { font-size: 1.05rem; }
-    
-    .form-row { grid-template-columns: 1fr 1fr; } /* توزيع الحقول بجانب بعض في الشاشات الكبيرة */
-    .project-details-grid { grid-template-columns: repeat(3, 1fr); } /* توزيع تفاصيل المشروع أفقياً */
-    .project-gallery { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } /* عرض كروت الصور بشكل متجاور احترافي */
+    .form-row { grid-template-columns: 1fr 1fr; }
+    .project-details-grid { grid-template-columns: repeat(3, 1fr); }
+    .project-gallery { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 }
