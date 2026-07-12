@@ -1,16 +1,23 @@
+/* -------------------------------------------------------------
+   🎨 Ahmed Hamid Architecture - Official Stylesheet (V2.0)
+   ------------------------------------------------------------- */
+
+/* 1️⃣ استيراد الخطوط الإشراقية للـ Typography */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
 
+/* 2️⃣ المتغيرات المعمارية للألوان والهوية البصرية */
 :root {
-    --primary-blue: #0a192f;       
-    --accent-blue: #172a45;        
-    --link-blue: #3066be;          
-    --bg-light: #f4f6f9;           
-    --card-bg: #ffffff;            
-    --text-dark: #1e293b;          
-    --text-muted: #64748b;        
-    --border-color: #e2e8f0;       
+    --primary-blue: #0a192f;       /* الأزرق الداكن الأساسي */
+    --accent-blue: #172a45;        /* أزرق الهيدر والفوتر */
+    --bg-light: #f8fafc;           /* خلفية الموقع المريحة للعين */
+    --card-bg: #ffffff;            /* خلفية كروت المشاريع والفورم */
+    --text-dark: #1e293b;          /* لون النصوص الأساسية */
+    --text-muted: #64748b;         /* لون النصوص الثانوية والتلميحات */
+    --border-color: #e2e8f0;       /* لون الفواصل والحدود */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* 3️⃣ الإعدادات العامة للموقع (Reset & Base) */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -22,257 +29,344 @@ body {
     background-color: var(--bg-light);
     color: var(--text-dark);
     line-height: 1.6;
-    direction: rtl;
+    direction: rtl; /* توجيه هندسي صحيح للغة العربية */
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* يضمن إن الفوتر يفضل تحت خالص حتى لو مفيش مشاريع */
+    min-height: 100vh; /* إجبار الفوتر على البقاء في الأسفل دائماً */
 }
 
-/* 📱 شريط الخانات العلوي (Navbar) المطور للموبايل */
+/* 4️⃣ شريط الخانات العلوي (Navbar) */
 .main-navbar {
     background-color: var(--primary-blue);
-    color: #ffffff;
-    padding: 10px 15px;
+    padding: 12px 20px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .nav-container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
 }
 
 .logo-wrapper {
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-shrink: 1;
-    min-width: 0; /* يمنع النص من الخروج عن الشاشة */
 }
 
-.company-logo {
-    background: #ffffff;
-    color: var(--primary-blue);
-    font-weight: 700;
-    font-size: 1rem;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    flex-shrink: 0;
+.company-logo-img {
+    height: 45px; /* الارتفاع المثالي لظهور كتل اللوقو بوضوح */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    transition: var(--transition);
 }
 
-.company-name {
-    font-weight: 600;
-    font-size: 0.85rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; /* لو الاسم طويل يختصر بنقاط بدل ما يكسر السطر */
+.company-logo-img:hover {
+    transform: scale(1.03);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
+    gap: 15px;
 }
 
 .nav-links a {
-    color: #e2e8f0;
+    color: #94a3b8;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 500;
+    transition: var(--transition);
 }
 
 .nav-links a.active {
     color: #ffffff;
-    border-bottom: 2px solid #ffffff;
-    padding-bottom: 2px;
+    font-weight: 600;
 }
 
 .btn-nav-admin {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
-    padding: 4px 10px;
-    font-size: 0.8rem;
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 6px;
     cursor: pointer;
-    white-space: nowrap;
+    transition: var(--transition);
 }
 
-/* 🏛️ الهيدر الترحيبي المطور للموبايل */
+.btn-nav-admin:hover {
+    background: #ffffff;
+    color: var(--primary-blue);
+    border-color: #ffffff;
+}
+
+/* 5️⃣ الهيدر الترحيبي الفخم (Hero Header) */
 .hero-header {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
     color: #ffffff;
-    padding: 35px 15px;
+    padding: 40px 20px;
     text-align: center;
+    border-bottom: 4px solid rgba(255, 255, 255, 0.05);
 }
 
 .hero-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
 }
 
 .hero-header p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #cbd5e1;
     max-width: 600px;
     margin: 0 auto;
     font-weight: 300;
 }
 
-/* الحاوية الرئيسية */
+/* 6️⃣ الحاوية الرئيسية للمحتوى */
 .container {
     width: 100%;
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 0 15px;
-    flex: 1; /* السحر المعماري اللي بيدفع الفوتر لآخر الشاشة تحت */
+    max-width: 800px; /* عرض ممتاز ومريح جداً للقراءة والمشاهدة على الموبايل والكمبيوتر */
+    margin: 25px auto;
+    padding: 0 20px;
+    flex: 1; /* دفع الفوتر لآخر الشاشة لأسفل هندسياً */
 }
 
-/* فورم التحكم */
+/* 7️⃣ فورم لوحة التحكم (Admin Panel) */
 #adminPanelSection {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 35px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 #adminPanelSection h3 {
-    font-size: 1rem;
-    margin-bottom: 15px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
     color: var(--primary-blue);
     border-bottom: 2px solid var(--bg-light);
-    padding-bottom: 8px;
+    padding-bottom: 10px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     font-weight: 600;
     font-size: 0.85rem;
+    color: var(--text-dark);
 }
 
 .form-control {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid var(--border-color);
     background: #f8fafc;
-    border-radius: 6px;
-    font-size: 0.85rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    transition: var(--transition);
 }
 
-/* 🖼️ كروت عرض المشاريع الاحترافية */
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(10, 25, 47, 0.05);
+}
+
+textarea.form-control {
+    height: 100px;
+    resize: vertical;
+}
+
+/* أزرار الفورم */
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-primary {
+    flex: 1;
+    background: var(--primary-blue);
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background: var(--accent-blue);
+}
+
+.btn-logout {
+    background: #f1f5f9;
+    color: #ef4444;
+    border: 1px solid #e2e8f0;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-logout:hover {
+    background: #fee2e2;
+}
+
+/* 8️⃣ كروت عرض المشاريع (Posts Feed) */
 #posts-feed-container {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 30px;
 }
 
 .post-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 }
 
 .post-card h2 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--primary-blue);
-    margin-bottom: 15px;
-    border-right: 3px solid var(--primary-blue);
-    padding-right: 8px;
+    margin-bottom: 18px;
+    border-right: 4px solid var(--primary-blue);
+    padding-right: 10px;
 }
 
+/* شبكة تفاصيل المشروع (الموقع، المساحة، المكونات) */
 .project-details-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 12px;
     background: #f8fafc;
-    padding: 12px;
-    border-radius: 6px;
+    padding: 15px;
+    border-radius: 8px;
     border: 1px solid var(--border-color);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .detail-item {
     font-size: 0.85rem;
+    color: var(--text-dark);
+}
+
+.detail-item strong {
     color: var(--text-muted);
 }
 
+/* الكتل النصية للمفاهيم والتحديات */
 .project-text-block {
-    margin-bottom: 15px;
-    font-size: 0.9rem;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    text-align: justify;
 }
 
 .project-text-block strong {
     display: block;
-    color: var(--accent-blue);
+    color: var(--primary-blue);
+    margin-bottom: 4px;
+    font-size: 0.9rem;
 }
 
+/* معرض الصور الفنية والمخططات المعمارية */
 .project-gallery {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
-    margin: 15px 0;
+    gap: 12px;
+    margin-top: 15px;
 }
 
 .project-gallery img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 6px;
+    height: 220px;
+    object-fit: cover; /* يمنع تمطيط الصور البرمجية */
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
 }
 
-/* ⚓ الفوتر المستقر أسفل الشاشة */
+.project-gallery img:hover {
+    transform: scale(1.01);
+}
+
+/* 9️⃣ الفوتر الاحترافي (Footer) */
 .main-footer {
     background-color: var(--accent-blue);
     color: #94a3b8;
     text-align: center;
-    padding: 20px 15px;
-    margin-top: auto; /* يضمن بقاء الفوتر في القاع دائماً */
-    border-top: 3px solid var(--primary-blue);
+    padding: 30px 20px;
+    margin-top: auto;
+    border-top: 4px solid var(--primary-blue);
+}
+
+.footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer-logo-img {
+    height: 65px; /* يبرز كتلة اللوقو في الختام بشكل ممتاز */
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 15px;
 }
 
 .footer-content p {
-    font-size: 0.8rem;
-    color: #f1f5f9;
-    margin-bottom: 4px;
+    font-size: 0.85rem;
+    color: #e2e8f0;
+    margin-bottom: 5px;
+    font-weight: 500;
 }
 
 .footer-sub {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: #64748b;
+    display: block;
 }
 
-/* 💻 تعديلات الشاشات الكبيرة (الكمبيوتر) */
+/* 🔟 الشاشات الكبيرة والكمبيوتر (Responsiveness & Grid Tuning) */
 @media (min-width: 650px) {
-    .company-name { font-size: 1.05rem; }
-    .company-logo { width: 38px; height: 38px; font-size: 1.1rem; }
-    .hero-header { padding: 50px 20px; }
-    .hero-header h1 { font-size: 2rem; }
-    .hero-header p { font-size: 1rem; }
-    .project-details-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-    .project-gallery { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-    .post-card { padding: 30px; }
+    .hero-header { padding: 55px 20px; }
+    .hero-header h1 { font-size: 2.2rem; }
+    .hero-header p { font-size: 1.05rem; }
     
+    .form-row { grid-template-columns: 1fr 1fr; } /* توزيع الحقول بجانب بعض في الشاشات الكبيرة */
+    .project-details-grid { grid-template-columns: repeat(3, 1fr); } /* توزيع تفاصيل المشروع أفقياً */
+    .project-gallery { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } /* عرض كروت الصور بشكل متجاور احترافي */
 }
-
