@@ -1,98 +1,81 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahmed Hamid Architecture | مساحات حديثة</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- NAVBAR مطابق للموقع التاني -->
+    <!-- NAVBAR -->
     <nav class="main-navbar">
         <div class="nav-container">
             <div class="logo-wrapper">
                 <img src="assets/logo.png" alt="Ahmed Hamid Architecture" class="company-logo-img">
-                <span class="company-name-text">AHMED HAMID<br><small>ARCHITECTURE</small></span>
-            </div>
-            <div class="nav-links">
-                <a href="#" class="active">الرئيسية</a>
-                <a href="#about">من نحن</a>
-                <a href="#services">الخدمات</a>
-                <a href="#projects">المشاريع</a>
-                <a href="#blog">المدونة</a>
-                <a href="#contact">تواصل</a>
+                <span class="company-name-text">AHMED HAMID</span>
             </div>
             <div class="nav-actions">
+                <a href="#projects" class="btn-nav-admin" style="text-decoration:none;">المشاريع</a>
+                <a href="#services" class="btn-nav-admin" style="text-decoration:none;">الخدمات</a>
+                <a href="#contact" class="btn-nav-admin" style="text-decoration:none;">تواصل</a>
                 <button id="adminLoginBtn" class="btn-nav-admin">لوحة التحكم ⚙️</button>
-                <button class="btn-talk">لنتحدث</button>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO HEADER -->
     <header class="hero-header">
         <div class="header-content">
-            <h5>نحن نصمم</h5>
-            <h1>مساحات <span>حديثة</span></h1>
+            <h5 style="font-weight:300; color:#cbd5e1; letter-spacing:2px;">نحن نصمم</h5>
+            <h1>مساحات <span style="color:#fff;">حديثة</span></h1>
             <p>العمارة • التصميم الداخلي • التخطيط • التصور ثلاثي الابعاد</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn-dark">عرض المشاريع →</a>
-                <a href="#contact" class="btn-light">تواصل معنا</a>
+            <div style="margin-top:25px; display:flex; gap:15px; justify-content:center;">
+                <a href="#projects" class="btn-primary" style="text-decoration:none;">عرض المشاريع →</a>
+                <a href="#contact" class="btn-logout" style="text-decoration:none; background:#fff; color:var(--primary-blue);">تواصل معنا</a>
             </div>
-        </div>
-        <div class="hero-img">
-            <img src="assets/hero-sketch.png" alt="Modern House">
         </div>
     </header>
 
     <div class="container">
         
         <!-- FEATURED PROJECTS -->
-        <section id="projects" class="section">
-            <div class="section-title">
+        <section id="projects" style="margin-top:40px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
                 <div>
-                    <span>اعمالنا</span>
-                    <h2>المشاريع المميزة</h2>
+                    <span style="color:var(--text-muted); font-size:0.85rem;">اعمالنا</span>
+                    <h2 style="font-size:1.8rem; color:var(--primary-blue);">المشاريع المميزة</h2>
                 </div>
-                <a href="#">عرض كل المشاريع →</a>
             </div>
-            <main id="posts-feed-container" class="projects-grid">
-                <!-- هنا بتجي المشاريع من script.js -->
-                <div class="empty-state">
-                    <h3>مرحباً بك في المعرض الهندسي</h3>
-                    <p>لم يتم نشر أي مشاريع معمارية حتى الآن</p>
-                </div>
-            </main>
+            <main id="posts-feed-container"></main>
         </section>
 
         <!-- SERVICES -->
-        <section id="services" class="section services">
-            <div class="container">
-                <span>خدماتنا</span>
-                <h2>ماذا نقدم</h2>
-                <div class="services-grid">
-                    <div class="service-item"><h4>التصميم المعماري</h4><p>حلول تصميمية ابداعية ووظيفية</p></div>
-                    <div class="service-item"><h4>التصميم الداخلي</h4><p>مساحات داخلية حديثة تناسب نمط حياتك</p></div>
-                    <div class="service-item"><h4>المخططات التنفيذية</h4><p>مخططات تفصيلية ودقيقة للتنفيذ</p></div>
-                    <div class="service-item"><h4>ادارة المشاريع</h4><p>من الفكرة حتى التسليم بدقة</p></div>
-                    <div class="service-item"><h4>تصميم اللاندسكيب</h4><p>مساحات خارجية تعزز البيئة</p></div>
-                    <div class="service-item"><h4>التصور ثلاثي الابعاد</h4><p>رندرات عالية الجودة قبل التنفيذ</p></div>
-                </div>
+        <section id="services" style="background:var(--primary-blue); color:#fff; padding:40px 20px; border-radius:12px; margin-top:40px;">
+            <div style="text-align:center;">
+                <span style="color:#cbd5e1;">خدماتنا</span>
+                <h2 style="color:#fff; margin-bottom:25px;">ماذا نقدم</h2>
+            </div>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:25px;">
+                <div><h4>التصميم المعماري</h4><p style="color:#cbd5e1; font-size:0.85rem;">حلول تصميمية ابداعية ووظيفية</p></div>
+                <div><h4>التصميم الداخلي</h4><p style="color:#cbd5e1; font-size:0.85rem;">مساحات داخلية حديثة تناسب نمط حياتك</p></div>
+                <div><h4>المخططات التنفيذية</h4><p style="color:#cbd5e1; font-size:0.85rem;">مخططات تفصيلية ودقيقة للتنفيذ</p></div>
+                <div><h4>ادارة المشاريع</h4><p style="color:#cbd5e1; font-size:0.85rem;">من الفكرة حتى التسليم بدقة</p></div>
+                <div><h4>تصميم اللاندسكيب</h4><p style="color:#cbd5e1; font-size:0.85rem;">مساحات خارجية تعزز البيئة</p></div>
+                <div><h4>التصور ثلاثي الابعاد</h4><p style="color:#cbd5e1; font-size:0.85rem;">رندرات عالية الجودة قبل التنفيذ</p></div>
             </div>
         </section>
 
         <!-- STATS -->
-        <div class="stats">
-            <div class="stat"><h3>15+</h3><p>سنة خبرة</p></div>
-            <div class="stat"><h3>120+</h3><p>مشروع منجز</p></div>
-            <div class="stat"><h3>35+</h3><p>عميل راضي</p></div>
-            <div class="stat"><h3>8+</h3><p>دولة نخدمها</p></div>
+        <div style="display:flex; justify-content:space-around; text-align:center; padding:40px 0; margin-top:20px; flex-wrap:wrap; gap:20px;">
+            <div><h3 style="font-size:2rem; color:var(--primary-blue);">15+</h3><p style="color:var(--text-muted); font-size:0.85rem;">سنة خبرة</p></div>
+            <div><h3 style="font-size:2rem; color:var(--primary-blue);">120+</h3><p style="color:var(--text-muted); font-size:0.85rem;">مشروع منجز</p></div>
+            <div><h3 style="font-size:2rem; color:var(--primary-blue);">35+</h3><p style="color:var(--text-muted); font-size:0.85rem;">عميل راضي</p></div>
+            <div><h3 style="font-size:2rem; color:var(--primary-blue);">8+</h3><p style="color:var(--text-muted); font-size:0.85rem;">دولة نخدمها</p></div>
         </div>
 
-        <!-- LOGIN & ADMIN PANEL - مخفيين -->
-        <section id="loginFormSection" style="display: none;">
+        <!-- LOGIN FORM -->
+        <section id="loginFormSection" style="display: none; background:var(--card-bg); padding:25px; border-radius:12px; margin-bottom:35px;">
             <h3>🔑 تسجيل الدخول للمشرف</h3>
             <div class="form-group">
                 <label>اسم المستخدم:</label>
@@ -105,9 +88,10 @@
             <button id="submitLoginBtn" type="button" class="btn-primary">دخول 🚪</button>
         </section>
 
+        <!-- ADMIN PANEL -->
         <section id="adminPanelSection" style="display: none;">
             <h3>📐 نشر وثيقة مشروع معماري جديد</h3>
-            <form id="adminPublishForm" onsubmit="return false;">
+            <form id="adminPublishForm"> <!-- شلت onsubmit="return false;" -->
                 <div class="form-group">
                     <label>📋 اسم المشروع المعماري:</label>
                     <input type="text" id="postTitle" class="form-control" placeholder="مثال: فيلا سكنية مودرن" required>
@@ -143,27 +127,27 @@
                     <input type="file" id="postFiles" class="form-control" multiple accept="image/*">
                 </div>
                 <div class="form-buttons">
-                    <button type="button" id="btnSubmitProject" class="btn-primary">نشر المشروع 🚀</button>
+                    <button type="submit" id="btnSubmitProject" class="btn-primary">نشر المشروع 🚀</button>
                     <button type="button" class="btn-logout" id="logoutBtn">خروج 🚪</button>
                 </div>
             </form>
         </section>
 
         <!-- CONTACT -->
-        <section id="contact" class="contact">
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <span>تواصل معنا</span>
-                    <h2>لنبني شيئاً <br>عظيماً معاً</h2>
-                    <p>نود ان نسمع عن مشروعك القادم</p>
-                    <p>📞 +249 XX XXX XXXX<br>✉️ info@ahmedhamidarch.com<br>📍 الخرطوم, السودان</p>
+        <section id="contact" style="background:var(--primary-blue); color:#fff; padding:40px 20px; border-radius:12px; margin-top:40px;">
+            <div style="display:grid; grid-template-columns:1fr; gap:30px;">
+                <div>
+                    <span style="color:#cbd5e1;">تواصل معنا</span>
+                    <h2 style="font-size:2rem;">لنبني شيئاً <br>عظيماً معاً</h2>
+                    <p style="color:#cbd5e1; margin:15px 0;">نود ان نسمع عن مشروعك القادم</p>
+                    <p>📞 +249 XX XXXX<br>✉️ info@ahmedhamidarch.com<br>📍 الخرطوم, السودان</p>
                 </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="الاسم">
-                    <input type="email" placeholder="الايميل">
-                    <input type="text" placeholder="الموضوع" style="grid-column: span 2;">
-                    <textarea rows="4" placeholder="رسالتك" style="grid-column: span 2;"></textarea>
-                    <button>ارسال الرسالة →</button>
+                <form style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+                    <input type="text" placeholder="الاسم" class="form-control">
+                    <input type="email" placeholder="الايميل" class="form-control">
+                    <input type="text" placeholder="الموضوع" class="form-control" style="grid-column: span 2;">
+                    <textarea rows="4" placeholder="رسالتك" class="form-control" style="grid-column: span 2;"></textarea>
+                    <button type="button" class="btn-primary" style="grid-column: span 2; background:#fff; color:var(--primary-blue);">ارسال الرسالة →</button>
                 </form>
             </div>
         </section>
@@ -180,4 +164,4 @@
 
     <script src="script.js"></script>
 </body>
-    </html>
+                    </html>
