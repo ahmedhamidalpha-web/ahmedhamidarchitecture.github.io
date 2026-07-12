@@ -12,12 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let projectsList = JSON.parse(localStorage.getItem('architect_projects')) || [];
 
+    // اظهار حالة الدخول
     if (sessionStorage.getItem('isAdminLoggedIn') === 'true') {
         if (adminPanelSection) adminPanelSection.style.display = 'block';
         if (adminLoginBtn) adminLoginBtn.textContent = 'لوحة التحكم مفتوحة ⚙️';
     }
 
-    // فتح فورم تسجيل الدخول
+    // فتح / قفل فورم تسجيل الدخول
     if (adminLoginBtn && loginFormSection) {
         adminLoginBtn.addEventListener('click', () => {
             if (sessionStorage.getItem('isAdminLoggedIn') === 'true') {
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 loginFormSection.style.display = 'none';
                 adminPanelSection.style.display = 'block';
                 adminLoginBtn.textContent = 'لوحة التحكم مفتوحة ⚙️';
+                adminPanelSection.scrollIntoView({ behavior: 'smooth' });
             } else {
                 alert("عذراً! البيانات غير صحيحة ❌");
             }
@@ -58,6 +60,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // دالة الحذف الجديدة
+    function deleteProject(id) {
+        if (!confirm("متأكد انك عايز تحذف المشروع دا؟")) return;
+        
+        projectsList = projectsList.filter(project => project.id !== id);
+        localStorage.setItem('architect_projects', JSON.stringify(projectsList));
+        renderProjects();
+        alert("تم حذف المشروع بنجاح 🗑️");
+    }
+
     function renderProjects() {
         if (!postsFeedContainer) return;
         postsFeedContainer.innerHTML = '';
@@ -70,8 +82,17 @@ document.addEventListener('DOMContentLoaded', () => {
         projectsList.forEach((project) => {
             const card = document.createElement('article');
             card.className = 'post-card';
+            
+            // زر الحذف بيظهر للادمن بس
+            const deleteBtn = sessionStorage.getItem('isAdminLoggedIn') === 'true' 
+            ? `<button class="btn-delete" onclick="deleteProject(${project.id})">🗑️ حذف المشروع</button>` 
+            : '';
+
             card.innerHTML = `
-                <h2>${project.title}</h2>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h2>${project.title}</h2>
+                    ${deleteBtn}
+                </div>
                 <div class="project-details-grid">
                     <div class="detail-item"><strong>📍 الموقع:</strong> ${project.location || 'غير محدد'}</div>
                     <div class="detail-item"><strong>📐 المساحة:</strong> ${project.area || 'غير محدد'}</div>
@@ -97,6 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    
+    // عشان onclick يشتغل لازم نخليها global
+    window.deleteProject = deleteProject;
 
     if (adminPublishForm) {
         adminPublishForm.addEventListener('submit', async (e) => {
