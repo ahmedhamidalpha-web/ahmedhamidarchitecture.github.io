@@ -1,167 +1,122 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Hamid Architecture | مساحات حديثة</title>
+    <title>Ahmed Hamid Architecture | MODERN DESIGN | INNOVATIVE SPACE</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="main-navbar">
         <div class="nav-container">
             <div class="logo-wrapper">
-                <img src="assets/logo.png" alt="Ahmed Hamid Architecture" class="company-logo-img">
-                <span class="company-name-text">AHMED HAMID</span>
+                <img src="assets/logo.png" alt="AHA" class="company-logo-img">
+                <span>AHMED HAMID<br><small>ARCHITECTURE</small></span>
             </div>
-            <div class="nav-actions">
-                <a href="#projects" class="btn-nav-admin" style="text-decoration:none;">المشاريع</a>
-                <a href="#services" class="btn-nav-admin" style="text-decoration:none;">الخدمات</a>
-                <a href="#contact" class="btn-nav-admin" style="text-decoration:none;">تواصل</a>
+            <div class="nav-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#projects">المشاريع</a>
+                <a href="#services">الخدمات</a>
+                <a href="#team">فريقنا</a>
+                <a href="#jobs">الوظائف</a>
+                <a href="#contact">تواصل</a>
                 <button id="adminLoginBtn" class="btn-nav-admin">لوحة التحكم ⚙️</button>
             </div>
         </div>
     </nav>
 
-    <!-- HERO HEADER -->
-    <header class="hero-header">
+    <header id="home" class="hero-header">
+        <div class="hero-bg-pattern"></div>
         <div class="header-content">
-            <h5 style="font-weight:300; color:#cbd5e1; letter-spacing:2px;">نحن نصمم</h5>
-            <h1>مساحات <span style="color:#fff;">حديثة</span></h1>
-            <p>العمارة • التصميم الداخلي • التخطيط • التصور ثلاثي الابعاد</p>
-            <div style="margin-top:25px; display:flex; gap:15px; justify-content:center;">
-                <a href="#projects" class="btn-primary" style="text-decoration:none;">عرض المشاريع →</a>
-                <a href="#contact" class="btn-logout" style="text-decoration:none; background:#fff; color:var(--primary-blue);">تواصل معنا</a>
+            <h5>WE DESIGN</h5>
+            <h1>MODERN <span>SPACES</span></h1>
+            <p>ARCHITECTURE • INTERIOR • PLANNING • 3D VISUALIZATION</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary">عرض المشاريع →</a>
+                <a href="#contact" class="btn-outline">اطلب مشروع</a>
             </div>
         </div>
     </header>
 
-    <div class="container">
+    <main class="container">
         
-        <!-- FEATURED PROJECTS -->
-        <section id="projects" style="margin-top:40px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
-                <div>
-                    <span style="color:var(--text-muted); font-size:0.85rem;">اعمالنا</span>
-                    <h2 style="font-size:1.8rem; color:var(--primary-blue);">المشاريع المميزة</h2>
-                </div>
-            </div>
-            <main id="posts-feed-container"></main>
+        <section id="projects" class="section">
+            <div class="section-title"><span>OUR WORK</span><h2>المشاريع المميزة</h2></div>
+            <div id="posts-feed-container" class="projects-grid"><!-- المشاريع هنا --></div>
         </section>
 
-        <!-- SERVICES -->
-        <section id="services" style="background:var(--primary-blue); color:#fff; padding:40px 20px; border-radius:12px; margin-top:40px;">
-            <div style="text-align:center;">
-                <span style="color:#cbd5e1;">خدماتنا</span>
-                <h2 style="color:#fff; margin-bottom:25px;">ماذا نقدم</h2>
-            </div>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:25px;">
-                <div><h4>التصميم المعماري</h4><p style="color:#cbd5e1; font-size:0.85rem;">حلول تصميمية ابداعية ووظيفية</p></div>
-                <div><h4>التصميم الداخلي</h4><p style="color:#cbd5e1; font-size:0.85rem;">مساحات داخلية حديثة تناسب نمط حياتك</p></div>
-                <div><h4>المخططات التنفيذية</h4><p style="color:#cbd5e1; font-size:0.85rem;">مخططات تفصيلية ودقيقة للتنفيذ</p></div>
-                <div><h4>ادارة المشاريع</h4><p style="color:#cbd5e1; font-size:0.85rem;">من الفكرة حتى التسليم بدقة</p></div>
-                <div><h4>تصميم اللاندسكيب</h4><p style="color:#cbd5e1; font-size:0.85rem;">مساحات خارجية تعزز البيئة</p></div>
-                <div><h4>التصور ثلاثي الابعاد</h4><p style="color:#cbd5e1; font-size:0.85rem;">رندرات عالية الجودة قبل التنفيذ</p></div>
+        <section id="services" class="services-section">
+            <div class="section-title light"><span>OUR SERVICES</span><h2>ماذا نقدم</h2></div>
+            <div class="services-grid">
+                <div class="service-card"><h4>التصميم المعماري</h4><p>حلول ابداعية ووظيفية تعكس هويتك</p></div>
+                <div class="service-card"><h4>التصميم الداخلي</h4><p>مساحات داخلية عصرية تناسب نمط حياتك</p></div>
+                <div class="service-card"><h4>التصور ثلاثي الابعاد</h4><p>رندرات فوتوريالية قبل التنفيذ</p></div>
+                <div class="service-card"><h4>المخططات التنفيذية</h4><p>دقة وتفاصيل لتنفيذ خالي من الاخطاء</p></div>
             </div>
         </section>
 
-        <!-- STATS -->
-        <div style="display:flex; justify-content:space-around; text-align:center; padding:40px 0; margin-top:20px; flex-wrap:wrap; gap:20px;">
-            <div><h3 style="font-size:2rem; color:var(--primary-blue);">15+</h3><p style="color:var(--text-muted); font-size:0.85rem;">سنة خبرة</p></div>
-            <div><h3 style="font-size:2rem; color:var(--primary-blue);">120+</h3><p style="color:var(--text-muted); font-size:0.85rem;">مشروع منجز</p></div>
-            <div><h3 style="font-size:2rem; color:var(--primary-blue);">35+</h3><p style="color:var(--text-muted); font-size:0.85rem;">عميل راضي</p></div>
-            <div><h3 style="font-size:2rem; color:var(--primary-blue);">8+</h3><p style="color:var(--text-muted); font-size:0.85rem;">دولة نخدمها</p></div>
-        </div>
-
-        <!-- LOGIN FORM -->
-        <section id="loginFormSection" style="display: none; background:var(--card-bg); padding:25px; border-radius:12px; margin-bottom:35px;">
-            <h3>🔑 تسجيل الدخول للمشرف</h3>
-            <div class="form-group">
-                <label>اسم المستخدم:</label>
-                <input type="text" id="loginUsername" class="form-control" placeholder="ادخل اسم المستخدم">
-            </div>
-            <div class="form-group">
-                <label>كلمة المرور:</label>
-                <input type="password" id="loginPassword" class="form-control" placeholder="ادخل كلمة المرور">
-            </div>
-            <button id="submitLoginBtn" type="button" class="btn-primary">دخول 🚪</button>
+        <section id="team" class="section">
+            <div class="section-title"><span>OUR TEAM</span><h2>فريقنا</h2></div>
+            <div id="team-list" class="team-grid"><!-- الموظفين هنا --></div>
         </section>
 
-        <!-- ADMIN PANEL -->
-        <section id="adminPanelSection" style="display: none;">
-            <h3>📐 نشر وثيقة مشروع معماري جديد</h3>
-            <form id="adminPublishForm"> <!-- شلت onsubmit="return false;" -->
-                <div class="form-group">
-                    <label>📋 اسم المشروع المعماري:</label>
-                    <input type="text" id="postTitle" class="form-control" placeholder="مثال: فيلا سكنية مودرن" required>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>📍 الموقع الجغرافي:</label>
-                        <input type="text" id="postLocation" class="form-control" placeholder="الموقع">
-                    </div>
-                    <div class="form-group">
-                        <label>📐 المساحة:</label>
-                        <input type="text" id="postArea" class="form-control" placeholder="مثال: 400 متر مربع">
+        <section id="jobs" class="section jobs-section">
+            <div class="section-title"><span>CAREERS</span><h2>فرص العمل</h2></div>
+            <div id="jobs-list"><!-- الوظائف هنا --></div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>LET'S BUILD<br>SOMETHING GREAT</h2>
+                    <p>نود ان نسمع عن مشروعك القادم</p>
+                    <div class="contact-details">
+                        <p>📧 : ahmedhamidarchitecture@gmail.com</p>
+                        <p>📱 : +249 92 437 2845</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/ahmedhamidarchitecture" target="_blank">FB</a>
+                            <a href="https://www.instagram.com/ahmed_hamid_architecture" target="_blank">IG</a>
+                            <a href="https://vm.tiktok.com/ZS9MCb1KJoBdN-iZvTF/" target="_blank">TT</a>
+                            <a href="https://www.linkedin.com/in/ahmed-hamid-architecture-9b9372260" target="_blank">LI</a>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>🧱 مكونات المشروع:</label>
-                    <input type="text" id="postComponents" class="form-control" placeholder="طوابق، غرف...">
-                </div>
-                <div class="form-group">
-                    <label>💡 الفكرة التصميمية:</label>
-                    <textarea id="postConcept" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>⚠️ التحديات والحلول:</label>
-                    <textarea id="postChallenges" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>🏆 النتيجة النهائية:</label>
-                    <textarea id="postResult" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>📸 الصور والمخططات:</label>
-                    <input type="file" id="postFiles" class="form-control" multiple accept="image/*">
-                </div>
-                <div class="form-buttons">
-                    <button type="submit" id="btnSubmitProject" class="btn-primary">نشر المشروع 🚀</button>
-                    <button type="button" class="btn-logout" id="logoutBtn">خروج 🚪</button>
-                </div>
-            </form>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" style="background:var(--primary-blue); color:#fff; padding:40px 20px; border-radius:12px; margin-top:40px;">
-            <div style="display:grid; grid-template-columns:1fr; gap:30px;">
-                <div>
-                    <span style="color:#cbd5e1;">تواصل معنا</span>
-                    <h2 style="font-size:2rem;">لنبني شيئاً <br>عظيماً معاً</h2>
-                    <p style="color:#cbd5e1; margin:15px 0;">نود ان نسمع عن مشروعك القادم</p>
-                    <p>📞 +249 XX XXXX<br>✉️ info@ahmedhamidarch.com<br>📍 الخرطوم, السودان</p>
-                </div>
-                <form style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
-                    <input type="text" placeholder="الاسم" class="form-control">
-                    <input type="email" placeholder="الايميل" class="form-control">
-                    <input type="text" placeholder="الموضوع" class="form-control" style="grid-column: span 2;">
-                    <textarea rows="4" placeholder="رسالتك" class="form-control" style="grid-column: span 2;"></textarea>
-                    <button type="button" class="btn-primary" style="grid-column: span 2; background:#fff; color:var(--primary-blue);">ارسال الرسالة →</button>
+                <form id="clientRequestForm" class="contact-form">
+                    <h3>اطلب عرض سعر لمشروعك</h3>
+                    <input type="text" id="clientName" placeholder="الاسم الكامل" required>
+                    <input type="tel" id="clientPhone" placeholder="رقم الواتساب" required>
+                    <input type="email" id="clientEmail" placeholder="الايميل">
+                    <input type="text" id="projectLocation" placeholder="موقع المشروع">
+                    <input type="text" id="projectArea" placeholder="المساحة التقريبية">
+                    <textarea id="clientDetails" rows="4" placeholder="التفاصيل: عدد الغرف, الشوارع, طلبات خاصة..." required></textarea>
+                    <button type="submit" class="btn-primary">ارسال الطلب →</button>
                 </form>
             </div>
         </section>
-    </div>
 
-    <!-- FOOTER -->
+        <!-- لوحة الادمن -->
+        <section id="adminPanelSection" class="admin-panel" style="display:none;">
+            <h2>لوحة التحكم</h2>
+            <button id="logoutBtn" class="btn-logout">تسجيل خروج</button>
+            <!-- هنا فورم رفع مشروع + وظيفة + موظف -->
+        </section>
+
+        <section id="loginFormSection" class="login-form" style="display:none;">
+            <input type="text" id="loginUsername" placeholder="اسم المستخدم">
+            <input type="password" id="loginPassword" placeholder="كلمة السر">
+            <button id="submitLoginBtn" class="btn-primary">دخول</button>
+        </section>
+    </main>
+
     <footer class="main-footer">
-        <div class="footer-content">
-            <img src="assets/logo.png" alt="Ahmed Hamid Architecture" class="footer-logo-img">
-            <p>© 2026 All Rights Reserved | Ahmed Hamid Architecture</p>
-            <span class="footer-sub">جودة إنشائية وفلسفة تصميمية مبتكرة</span>
-        </div>
+        <img src="assets/logo.png" class="footer-logo-img">
+        <p>© 2026 Ahmed Hamid Architecture. All Rights Reserved.</p>
+        <span>MODERN DESIGN | INNOVATIVE SPACE</span>
     </footer>
 
     <script src="script.js"></script>
 </body>
-                    </html>
+            </html>
