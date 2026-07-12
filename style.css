@@ -368,3 +368,18 @@ textarea.form-control { height: 120px; resize: vertical; }
     .stats { gap: 20px; }
     .stat h3 { font-size: 2rem; }
 }
+.btn-delete {
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.btn-delete:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+   }
