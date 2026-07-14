@@ -3,103 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Hamid Architecture | مكتب أحمد حامد للهندسة المعمارية</title>
-    <meta name="description" content="مكتب متخصص في التصميم المعماري والتصور ثلاثي الأبعاد والتصميم الداخلي في السودان">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>Ahmed Hamid Architecture</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="main-navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo-wrapper">
-                <img src="assets/logo.png" alt="Ahmed Hamid Architecture" class="company-logo-img">
-                <span>Ahmed Hamid Architecture</span>
+    <header class="header-pro">
+        <div class="container header-container">
+            <a href="index.html" class="logo-pro">
+                <img src="assets/logo.png" alt="AHA">
+                <div>
+                    <span>Ahmed Hamid</span>
+                    <span>Architecture</span>
+                </div>
             </a>
-            <div class="nav-links">
-                <a href="index.html" class="active">الرئيسية</a>
+            <nav class="nav-pro">
                 <a href="projects.html">المشاريع</a>
                 <a href="services.html">الخدمات</a>
-                <a href="team.html">فريقنا</a>
-                <a href="jobs.html">الوظائف</a>
-                <a href="contact.html">تواصل</a>
-                <a href="admin.html" class="btn-nav-admin">⚙️</a>
-            </div>
-        </div>
-    </nav>
-
-    <header class="hero-header">
-        <div class="header-content">
-            <h5>WE DESIGN</h5>
-            <h1>MODERN <span>SPACES</span></h1>
-            <p>ARCHITECTURE • INTERIOR • PLANNING • 3D VISUALIZATION</p>
-            <div class="hero-buttons">
-                <a href="projects.html" class="btn-primary">عرض المشاريع</a>
-                <a href="contact.html" class="btn-outline">اطلب مشروع</a>
-            </div>
+                <a href="about.html">عن المكتب</a>
+                <a href="contact.html" class="btn-contact">تواصل</a>
+            </nav>
         </div>
     </header>
 
-    <main>
-        <section class="section about-section">
-            <div class="container about-grid">
-                <div class="about-text">
-                    <span class="section-tag">من نحن</span>
-                    <h2>نصمم المستقبل، نبني اليوم</h2>
-                    <p><b>Ahmed Hamid Architecture</b> مكتب معماري متخصص في تقديم حلول تصميمية مبتكرة تجمع بين الجمال والوظيفة. نعمل على تحويل أفكارك إلى مساحات استثنائية.</p>
-                    <a href="services.html" class="btn-text">تعرف على خدماتنا →</a>
-                </div>
-                <div class="about-image">
-                    <img src="assets/about.jpg" alt="About">
-                </div>
-            </div>
-        </section>
-
-        <section class="section projects-section">
-            <div class="container">
-                <div class="section-title">
-                    <span class="section-tag">أعمالنا</span>
-                    <h2>احدث المشاريع</h2>
-                </div>
-                <div id="latest-projects" class="projects-grid"></div>
-                <div class="center-btn">
-                    <a href="projects.html" class="btn-primary">عرض كل المشاريع</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="main-footer">
-        <div class="container footer-grid">
-            <div>
-                <img src="assets/logo.png" class="footer-logo-img">
-                <p>نحول الأفكار إلى مساحات. نصمم للمستقبل.</p>
-            </div>
-            <div>
-                <h4>روابط سريعة</h4>
-                <ul>
-                    <li><a href="projects.html">المشاريع</a></li>
-                    <li><a href="jobs.html">الوظائف</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>تواصل معنا</h4>
-                <p>Email: ahmedhamidarchitecture@gmail.com</p>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/ahmedhamidarchitecture" target="_blank">FB</a>
-                    <a href="https://www.instagram.com/ahmed_hamid_architecture?igsh=MXd1ZDlyaHlpdzB5NA==" target="_blank">IG</a>
-                    <a href="https://vm.tiktok.com/ZS9MCb1KJoBdN-iZvTF/" target="_blank">TT</a>
-                    <a href="https://www.linkedin.com/in/ahmed-hamid-architecture-9b9372260?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">LI</a>
-                    <a href="https://drive.google.com/drive/folders/10ENiX9zYi3LGUwE_716WAP_rqGLReDUr" target="_blank">DR</a>
-                </div>
+    <section class="hero-pro">
+        <img src="assets/hero-bg.jpg" class="hero-bg-img">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h5>WE DESIGN THE FUTURE</h5>
+            <h1>Architecture & <br> <span>3D Visualization</span></h1>
+            <p>نحول الرؤية إلى واقع. نصمم مساحات ملهمة تجمع بين الابتكار والاستدامة والجمال الخالد.</p>
+            <div class="hero-cta">
+                <a href="projects.html" class="btn-pro-primary">استكشف أعمالنا</a>
+                <a href="contact.html" class="btn-pro-secondary">ابدأ مشروعك</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 Ahmed Hamid Architecture. All Rights Reserved.</p>
-        </div>
-    </footer>
-    <script src="script.js"></script>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <script src="./script.js"></script>
 </body>
 </html>
