@@ -50,3 +50,12 @@ body { font-family: 'Cairo', sans-serif; background-color: var(--bg); color: var
 .admin-card { background: var(--card); padding: 30px; border-radius: 16px; margin-bottom: 30px; }
 .admin-card input,.admin-card textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Cairo'; }
 @media(max-width: 768px){.about-grid,.footer-grid { grid-template-columns: 1fr; }.nav-links { display: none; } }
+.page-header { background: #1E2A5E; color: #fff; padding: 80px 0; text-align: center; }
+.contact-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; padding: 60px 0; }
+.contact-info { background: #fff; padding: 30px; border-radius: 16px; }
+.contact-form-wrapper { background: #fff; padding: 30px; border-radius: 16px; }
+.contact-form-wrapper input,.contact-form-wrapper select,.contact-form-wrapper textarea {
+    width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #E5E7EB; border-radius: 8px; font-family: 'Cairo';
+}
+#formStatus { margin-top: 10px; font-weight: 700; }
+@media(max-width: 768px){.contact-grid { grid-template-columns: 1fr; } }
