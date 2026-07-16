@@ -14,7 +14,7 @@ Projects | Ahmed Hamid Architecture
 
 
 <meta name="description"
-content="Explore architectural projects by Ahmed Hamid Architecture.">
+content="Explore architectural projects by Ahmed Hamid Architecture including residential, commercial and interior designs.">
 
 
 <link rel="icon" href="assets/logo.png">
@@ -39,10 +39,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 </head>
 
 
-
 <body>
-
-
 
 
 
@@ -50,26 +47,19 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <header class="header">
 
-
 <div class="container nav-container">
 
 
-<a href="index.html"
-class="logo">
-
+<a href="index.html" class="logo">
 
 <img src="assets/logo.png"
-alt="Ahmed Hamid Architecture">
-
+alt="Ahmed Hamid Architecture Logo">
 
 <span>
 Ahmed Hamid Architecture
 </span>
 
-
 </a>
-
-
 
 
 
@@ -81,10 +71,7 @@ Ahmed Hamid Architecture
 
 
 
-
-
 <nav class="nav-menu">
-
 
 <a href="index.html">
 Home
@@ -101,39 +88,27 @@ Services
 </a>
 
 
-<a href="projects.html"
-class="active">
-
+<a href="projects.html" class="active">
 Projects
-
 </a>
 
 
 <a href="blog.html">
-
 Blog
-
 </a>
 
 
 <a href="contact.html">
-
 Contact
-
 </a>
 
 
 </nav>
 
 
-
 </div>
 
-
 </header>
-
-
-
 
 
 
@@ -150,16 +125,12 @@ Contact
 
 
 <h1>
-
 Architectural Projects
-
 </h1>
 
 
 <p>
-
-Discover our residential, commercial and interior design projects.
-
+Explore our architectural concepts and design solutions.
 </p>
 
 
@@ -174,9 +145,7 @@ Discover our residential, commercial and interior design projects.
 
 
 
-
-
-<!-- PROJECTS -->
+<!-- PROJECTS LIST -->
 
 
 <section class="projects">
@@ -185,38 +154,25 @@ Discover our residential, commercial and interior design projects.
 <div class="container">
 
 
-
-
-
 <div class="section-header">
 
 
 <span class="section-subtitle">
-
 PORTFOLIO
-
 </span>
 
 
-
 <h2>
-
-Selected Works
-
+Selected Projects
 </h2>
 
 
-
 <p>
-
-Explore our architectural concepts and completed designs.
-
+Modern architectural projects designed with creativity and functionality.
 </p>
 
 
 </div>
-
-
 
 
 
@@ -235,14 +191,12 @@ All
 </button>
 
 
-
 <button class="filter-btn"
 data-filter="residential">
 
 Residential
 
 </button>
-
 
 
 <button class="filter-btn"
@@ -253,14 +207,12 @@ Commercial
 </button>
 
 
-
 <button class="filter-btn"
 data-filter="interior">
 
 Interior
 
 </button>
-
 
 
 <button class="filter-btn"
@@ -271,9 +223,7 @@ Planning
 </button>
 
 
-
 </div>
-
 
 
 
@@ -285,10 +235,7 @@ Planning
 class="projects-grid">
 
 
-
 </div>
-
-
 
 
 
@@ -306,16 +253,19 @@ class="projects-grid">
 
 
 
-<!-- PROJECT DETAILS -->
+<!-- SINGLE PROJECT VIEW -->
 
-<section class="project-details">
+
+<section class="single-project">
 
 
 <div class="container">
 
 
+
 <div id="project-gallery"
 class="project-gallery">
+
 
 </div>
 
@@ -323,7 +273,7 @@ class="project-gallery">
 
 
 
-<div class="project-info">
+<div class="project-content-box">
 
 
 <h2 id="project-title">
@@ -331,13 +281,16 @@ class="project-gallery">
 </h2>
 
 
+
 <div id="project-description">
 
-</div>
-
-
 
 </div>
+
+
+
+</div>
+
 
 
 
@@ -353,8 +306,7 @@ class="project-gallery">
 
 
 
-
-<!-- COMMENTS -->
+<!-- COMMENTS SECTION -->
 
 
 <section class="comments-section">
@@ -363,15 +315,27 @@ class="project-gallery">
 <div class="container">
 
 
+<div class="section-header">
+
+
+<span class="section-subtitle">
+COMMENTS
+</span>
+
+
 <h2>
-
-Client Comments
-
+Visitor Comments
 </h2>
+
+
+</div>
+
+
 
 
 
 <div id="comments-container">
+
 
 </div>
 
@@ -381,32 +345,35 @@ Client Comments
 
 
 
-<div class="comment-form">
+
+<div class="comment-box">
 
 
 <h3>
-
 Leave Your Comment
-
 </h3>
+
 
 
 
 <textarea
 id="comment-text"
-placeholder="Write your comment...">
-
+placeholder="Write your comment here...">
 </textarea>
+
 
 
 
 
 <button
 class="btn btn-primary"
-onclick="addComment(
-new URLSearchParams(window.location.search).get('id')
-)">
+onclick="
 
+addComment(
+new URLSearchParams(window.location.search).get('id')
+)
+
+">
 
 Send Comment
 
@@ -414,8 +381,8 @@ Send Comment
 
 
 
-</div>
 
+</div>
 
 
 
@@ -435,17 +402,111 @@ Send Comment
 
 <!-- FOOTER -->
 
+
 <footer class="footer">
 
 
-<div class="container">
+<div class="container footer-grid">
+
+
+<div>
+
+
+<img src="assets/logo.png"
+class="footer-logo"
+alt="Logo">
+
+
+<h3>
+Ahmed Hamid Architecture
+</h3>
 
 
 <p>
-
-© 2026 Ahmed Hamid Architecture
-
+Modern Architecture • Interior Design • Planning
 </p>
+
+
+</div>
+
+
+
+
+<div>
+
+
+<h4>
+Company
+</h4>
+
+
+<ul>
+
+<li>
+<a href="about.html">
+About
+</a>
+</li>
+
+
+<li>
+<a href="services.html">
+Services
+</a>
+</li>
+
+
+<li>
+<a href="projects.html">
+Projects
+</a>
+</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<h4>
+Contact
+</h4>
+
+
+<p>
+Sudan
+</p>
+
+
+<p>
+ahmedhamidarchitecture@gmail.com
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div class="footer-bottom">
+
+
+© 2026 Ahmed Hamid Architecture.
+All Rights Reserved.
 
 
 </div>
@@ -460,11 +521,22 @@ Send Comment
 
 
 
+<button id="backToTop">
+
+<i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+
+
+
+
+
+
 
 <script src="script.js"></script>
 
 
 </body>
-
 
 </html>
