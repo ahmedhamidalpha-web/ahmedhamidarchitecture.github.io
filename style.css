@@ -3007,3 +3007,16 @@ font-size:1.9rem;
     margin:0 auto 20px;
 
 }
+/* ADMIN DASHBOARD LOGO */
+
+.admin-logo,
+.dashboard-logo,
+.admin-header img{
+
+    width:80px;
+
+    height:80px;
+
+    object-fit:contain;
+
+}
