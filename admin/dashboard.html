@@ -1,1 +1,651 @@
-gjcxgr
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Admin Dashboard | Ahmed Hamid Architecture</title>
+
+
+<link rel="icon" href="../assets/logo.png">
+
+
+<link rel="stylesheet" href="../style.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+
+
+<body class="admin-page">
+
+
+
+<!-- ADMIN HEADER -->
+
+
+<header class="admin-header">
+
+
+<div class="admin-container">
+
+
+<div class="admin-brand">
+
+
+<img src="../assets/logo.png">
+
+
+<h2>
+
+Ahmed Hamid Architecture
+
+</h2>
+
+
+</div>
+
+
+
+
+<button id="logoutBtn">
+
+Logout
+
+</button>
+
+
+</div>
+
+
+</header>
+
+
+
+
+
+
+
+<!-- DASHBOARD -->
+
+
+<main class="admin-dashboard">
+
+
+
+<div class="admin-container">
+
+
+
+
+
+<h1>
+
+Dashboard
+
+</h1>
+
+
+<p>
+
+Welcome back, Ahmed.
+
+Manage your projects, posts and website statistics.
+
+</p>
+
+
+
+
+
+
+
+
+<!-- ANALYTICS -->
+
+
+<section class="analytics-section">
+
+
+<h2>
+
+Website Analytics
+
+</h2>
+
+
+
+
+<div class="analytics-cards">
+
+
+
+<div class="analytics-card">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+<div>
+
+<h3 id="totalVisitors">
+
+--
+
+</h3>
+
+
+<p>
+
+Total Visitors
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="analytics-card">
+
+
+<i class="fa-solid fa-calendar-day"></i>
+
+
+<div>
+
+<h3 id="todayVisitors">
+
+--
+
+</h3>
+
+
+<p>
+
+Today
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="analytics-card">
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
+<div>
+
+<h3 id="monthVisitors">
+
+--
+
+</h3>
+
+
+<p>
+
+This Month
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="analytics-card">
+
+
+<i class="fa-solid fa-earth-africa"></i>
+
+
+<div>
+
+<h3 id="yearVisitors">
+
+--
+
+</h3>
+
+
+<p>
+
+This Year
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="chart-box">
+
+
+<canvas id="visitorsChart"></canvas>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- MANAGEMENT -->
+
+
+<section class="management-section">
+
+
+
+<h2>
+
+Website Management
+
+</h2>
+
+
+
+
+<div class="management-grid">
+
+
+
+<a href="add-project.html"
+class="management-card">
+
+
+<i class="fa-solid fa-plus"></i>
+
+
+<h3>
+
+Add Project
+
+</h3>
+
+
+<p>
+
+Upload new architectural projects.
+
+</p>
+
+
+</a>
+
+
+
+
+
+<a href="edit-project.html"
+class="management-card">
+
+
+<i class="fa-solid fa-pen"></i>
+
+
+<h3>
+
+Edit Projects
+
+</h3>
+
+
+<p>
+
+Modify or remove projects.
+
+</p>
+
+
+</a>
+
+
+
+
+
+<a href="posts.html"
+class="management-card">
+
+
+<i class="fa-solid fa-newspaper"></i>
+
+
+<h3>
+
+Posts & Articles
+
+</h3>
+
+
+<p>
+
+Manage blog posts and announcements.
+
+</p>
+
+
+</a>
+
+
+
+
+
+<a href="../projects.html"
+target="_blank"
+class="management-card">
+
+
+<i class="fa-solid fa-eye"></i>
+
+
+<h3>
+
+View Website
+
+</h3>
+
+
+<p>
+
+Open public website.
+
+</p>
+
+
+</a>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- QUICK STATS -->
+
+
+<section class="quick-section">
+
+
+<h2>
+
+Content Overview
+
+</h2>
+
+
+
+<div class="quick-grid">
+
+
+
+<div>
+
+<h3 id="projectsCount">
+
+--
+
+</h3>
+
+<span>
+
+Projects
+
+</span>
+
+</div>
+
+
+
+
+<div>
+
+<h3 id="postsCount">
+
+--
+
+</h3>
+
+<span>
+
+Posts
+
+</span>
+
+</div>
+
+
+
+
+
+<div>
+
+<h3 id="commentsCount">
+
+--
+
+</h3>
+
+<span>
+
+Comments
+
+</span>
+
+</div>
+
+
+
+
+
+<div>
+
+<h3 id="requestsCount">
+
+--
+
+</h3>
+
+<span>
+
+Client Requests
+
+</span>
+
+</div>
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+</div>
+
+
+</main>
+
+
+
+
+
+
+
+
+<script>
+
+
+// LOGOUT
+
+
+document
+.getElementById("logoutBtn")
+.onclick = function(){
+
+
+localStorage.removeItem("adminLogged");
+
+
+window.location.href="login.html";
+
+
+};
+
+
+
+
+
+
+
+// TEMPORARY ANALYTICS CHART
+// Will connect to Google Analytics API later
+
+
+const ctx =
+document
+.getElementById('visitorsChart');
+
+
+
+new Chart(ctx, {
+
+
+type:'line',
+
+
+data:{
+
+
+labels:[
+'Jan',
+'Feb',
+'Mar',
+'Apr',
+'May',
+'Jun'
+],
+
+
+datasets:[{
+
+
+label:'Visitors',
+
+
+data:[
+0,
+0,
+0,
+0,
+0,
+0
+]
+
+
+}]
+
+
+},
+
+
+
+options:{
+
+
+responsive:true
+
+
+}
+
+
+
+});
+
+
+
+</script>
+
+
+
+
+</body>
+
+
+</html>
