@@ -8,22 +8,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Add Project | Ahmed Hamid Architecture</title>
+<title>
+Add Project | Admin
+</title>
 
 
 <link rel="icon" href="../assets/logo.png">
 
 
 <link rel="stylesheet" href="../style.css">
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
 
 
 <link rel="stylesheet"
@@ -33,48 +26,46 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 </head>
 
 
-<body class="admin-page">
+<body class="admin-body">
 
 
 
+<!-- ADMIN HEADER -->
 
 
 <header class="admin-header">
 
-<div class="admin-container">
+
+<div class="container">
 
 
-<div class="admin-brand">
+<a href="dashboard.html"
+class="admin-logo">
 
 
 <img src="../assets/logo.png">
 
-
-<h2>
-
+<span>
 Ahmed Hamid Architecture
-
-</h2>
-
-
-</div>
-
-
-
-
-<a href="dashboard.html"
-class="admin-back">
-
-
-<i class="fa-solid fa-arrow-left"></i>
-
-Dashboard
+</span>
 
 
 </a>
 
 
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Dashboard
+
+</a>
+
+
+
 </div>
+
 
 </header>
 
@@ -85,20 +76,18 @@ Dashboard
 
 
 
-<main class="admin-dashboard">
+
+<!-- ADD PROJECT -->
+
+<section class="admin-section">
 
 
-<div class="admin-container">
-
-
-
-
-
-<div class="admin-form-box">
+<div class="container">
 
 
 
-<div class="form-title">
+<div class="admin-box">
+
 
 
 <h1>
@@ -108,19 +97,12 @@ Add New Project
 </h1>
 
 
+
 <p>
 
-Create a new architectural project.
-
-Text will be saved in Supabase and images will be uploaded to Google Drive.
+Upload project information and images.
 
 </p>
-
-
-</div>
-
-
-
 
 
 
@@ -133,28 +115,18 @@ Text will be saved in Supabase and images will be uploaded to Google Drive.
 
 
 
-<div class="form-grid">
-
-
-
 <div class="form-group">
 
 
 <label>
-
 Project Title
-
 </label>
 
 
 <input
-
 type="text"
-
 id="project-title"
-
 placeholder="Example: Modern Villa Design"
-
 required>
 
 
@@ -170,9 +142,7 @@ required>
 
 
 <label>
-
 Category
-
 </label>
 
 
@@ -181,37 +151,27 @@ required>
 
 
 <option value="">
-
 Select Category
-
 </option>
 
 
 <option value="residential">
-
 Residential
-
 </option>
 
 
 <option value="commercial">
-
 Commercial
-
 </option>
 
 
 <option value="interior">
-
 Interior
-
 </option>
 
 
 <option value="planning">
-
 Planning
-
 </option>
 
 
@@ -231,22 +191,18 @@ Planning
 
 
 <label>
-
 Location
-
 </label>
 
 
 <input
-
 type="text"
-
 id="project-location"
-
-placeholder="Example: Khartoum, Sudan">
+placeholder="Khartoum, Sudan">
 
 
 </div>
+
 
 
 
@@ -259,24 +215,14 @@ placeholder="Example: Khartoum, Sudan">
 
 
 <label>
-
-Project Date
-
+Plot Area
 </label>
 
 
 <input
-
-type="date"
-
-id="project-date">
-
-
-</div>
-
-
-
-
+type="text"
+id="project-area"
+placeholder="500 m²">
 
 
 </div>
@@ -293,20 +239,15 @@ id="project-date">
 
 
 <label>
-
-Project Description
-
+Project Components
 </label>
 
 
 <textarea
+id="project-components"
+placeholder="Bedrooms, living spaces, services...">
 
-id="project-description"
-
-rows="8"
-
-placeholder="Write project description..."
-required></textarea>
+</textarea>
 
 
 </div>
@@ -323,29 +264,39 @@ required></textarea>
 
 
 <label>
-
-Project Images
-
+Design Concept
 </label>
 
 
+<textarea
+id="project-description"
+placeholder="Describe the design idea..."
+required>
 
-<input
-
-type="file"
-
-id="project-images"
-
-accept="image/*"
-
-multiple>
+</textarea>
 
 
-<p class="upload-note">
+</div>
 
-Images will be uploaded to Google Drive.
 
-</p>
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Challenges
+</label>
+
+
+<textarea
+id="project-challenges">
+
+</textarea>
 
 
 </div>
@@ -358,8 +309,44 @@ Images will be uploaded to Google Drive.
 
 
 
-<div class="image-preview"
-id="image-preview">
+<div class="form-group">
+
+
+<label>
+Result
+</label>
+
+
+<textarea
+id="project-result">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Project Images
+</label>
+
+
+<input
+type="file"
+id="project-images"
+multiple
+accept="image/*"
+required>
 
 
 </div>
@@ -373,13 +360,8 @@ id="image-preview">
 
 
 <button
-
 type="submit"
-
 class="btn btn-primary">
-
-
-<i class="fa-solid fa-cloud-arrow-up"></i>
 
 
 Publish Project
@@ -391,8 +373,8 @@ Publish Project
 
 
 
-
 <p id="project-message"></p>
+
 
 
 
@@ -407,14 +389,10 @@ Publish Project
 </div>
 
 
-
-
-
-
 </div>
 
 
-</main>
+</section>
 
 
 
@@ -424,98 +402,7 @@ Publish Project
 
 
 
-<script>
-
-
-
-// Image Preview
-
-
-const imageInput =
-document.getElementById("project-images");
-
-
-const preview =
-document.getElementById("image-preview");
-
-
-
-imageInput
-.addEventListener(
-"change",
-function(){
-
-
-preview.innerHTML="";
-
-
-Array.from(this.files)
-.forEach(file=>{
-
-
-let reader =
-new FileReader();
-
-
-
-reader.onload=function(e){
-
-
-let img =
-document.createElement("img");
-
-
-img.src=e.target.result;
-
-
-preview.appendChild(img);
-
-
-};
-
-
-
-reader.readAsDataURL(file);
-
-
-
-});
-
-
-});
-
-
-
-
-
-
-// Submit placeholder
-
-document
-.getElementById("project-form")
-.addEventListener(
-"submit",
-function(e){
-
-
-e.preventDefault();
-
-
-
-document
-.getElementById("project-message")
-.innerHTML =
-"Project system will be connected with Supabase and Google Drive.";
-
-
-});
-
-
-
-</script>
-
-
-
+<script src="../script.js"></script>
 
 
 </body>
