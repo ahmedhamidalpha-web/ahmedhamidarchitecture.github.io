@@ -1,356 +1,631 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ahmed Hamid Architecture — Modern Architecture Studio, Sudan</title>
-  <meta name="description" content="Ahmed Hamid Architecture is an independent studio in Sudan designing modern residential, commercial and interior projects.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed Hamid Architecture — Modern Architecture Studio</title>
+<meta name="description" content="Ahmed Hamid Architecture is an independent studio designing modern residential, commercial and interior projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary-dark: #0A1B30; /* الكحلي الداكن من الصورة */
+    --accent-blue: #0F2544;
+    --light-bg: #F8F9FA;
+    --border-color: #E2E8F0;
+    --text-dark: #1E293B;
+    --text-muted: #64748B;
+    --text-light: #F8FAFC;
+    --max-width: 1280px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #ffffff;
+    color: var(--text-dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--primary-dark);
+    letter-spacing: -0.02em;
+  }
+
+  a { color: inherit; text-decoration: none; transition: all 0.3s ease; }
+  img { max-width: 100%; display: block; border-radius: 4px; }
+  .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; }
+  .section-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+    transition: all 0.3s ease;
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; }
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Public+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-logo-svg { width: 45px; height: auto; }
+  .brand-text { display: flex; flex-direction: column; }
+  .brand-name { font-size: 15px; font-weight: 700; color: var(--primary-dark); letter-spacing: 1px; text-transform: uppercase; }
+  .brand-sub { font-size: 8px; color: var(--text-muted); letter-spacing: 3px; text-transform: uppercase; margin-top: 1px; }
+
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-dark); letter-spacing: 0.05em; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text-muted); border-bottom: 2px solid var(--primary-dark); padding-bottom: 4px; }
   
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .btn-talk {
+    background: var(--primary-dark); color: white;
+    padding: 10px 22px; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; border-radius: 2px;
+  }
+  .btn-talk:hover { background: #1a3354; }
+  .burger { display: none; background: none; border: 0; color: var(--primary-dark); font-size: 24px; cursor: pointer; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    background: #ffffff; padding-top: 80px; position: relative; overflow: hidden;
+  }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr 1.3fr; gap: 40px; align-items: center; width: 100%; }
+  
+  .hero-content { position: relative; z-index: 2; }
+  .hero h1 {
+    font-size: clamp(44px, 5.5vw, 76px); line-height: 1.1;
+    color: var(--primary-dark); font-weight: 700; margin-bottom: 24px; text-transform: uppercase;
+  }
+  .hero-features { display: flex; gap: 12px; margin-bottom: 35px; color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .hero-actions { display: flex; gap: 16px; }
+  
+  .btn-solid {
+    background: var(--primary-dark); color: white; padding: 14px 28px;
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    display: inline-flex; align-items: center; gap: 8px; border-radius: 2px;
+  }
+  .btn-solid:hover { background: #1a3354; }
+  .btn-outline {
+    border: 1px solid var(--border-color); color: var(--text-dark); padding: 14px 28px;
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    border-radius: 2px;
+  }
+  .btn-outline:hover { background: var(--light-bg); }
+
+  .hero-counter {
+    position: absolute; left: 40px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 15px;
+    font-size: 12px; font-weight: 700; color: var(--primary-dark);
+  }
+  .hero-counter .line { width: 1px; height: 80px; background: var(--border-color); position: relative; }
+  .hero-counter .line::after { content: ''; position: absolute; top: 30%; left: -2px; width: 5px; height: 5px; background: var(--primary-dark); border-radius: 50%; }
+
+  .hero-illustration { position: relative; width: 100%; height: 100%; display: flex; justify-content: flex-end; }
+  .hero-illustration img { width: 100%; max-width: 650px; height: auto; object-fit: contain; }
+
+  .scroll-down {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+
+  /* ---------- FEATURED PROJECTS ---------- */
+  .featured-projects { padding: 100px 0; background: #ffffff; }
+  .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
+  .section-header h2 { font-size: 32px; text-transform: uppercase; }
+  .view-all-link { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px; }
+
+  .projects-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .project-card-new { position: relative; overflow: hidden; height: 380px; border-radius: 4px; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; color: white; cursor: pointer; }
+  .project-card-new img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: transform 0.6s ease; }
+  .project-card-new::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,27,48,0.9) 0%, rgba(10,27,48,0.2) 60%, transparent 100%); z-index: 2; }
+  .project-card-new:hover img { transform: scale(1.05); }
+  .project-card-content { position: relative; z-index: 3; }
+  .project-card-content h3 { color: white; font-size: 16px; margin-bottom: 4px; text-transform: uppercase; }
+  .project-card-content p { font-size: 12px; color: rgba(255,255,255,0.7); }
+  .project-card-content span { font-size: 11px; color: rgba(255,255,255,0.5); display: block; margin-top: 6px; }
+  .project-card-arrow {
+    position: absolute; right: 24px; bottom: 24px; z-index: 3;
+    width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: white; transition: all 0.3s ease;
+  }
+  .project-card-new:hover .project-card-arrow { background: white; color: var(--primary-dark); }
+
+  /* ---------- WHAT WE DO (SERVICES) ---------- */
+  .what-we-do { background: var(--primary-dark); color: white; padding: 100px 0; }
+  .what-we-do .section-tag { color: rgba(255, 255, 255, 0.5); }
+  .what-we-do h2 { color: white; font-size: 32px; margin-bottom: 60px; text-transform: uppercase; }
+  
+  .services-grid-new { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.1); }
+  .service-box { background: var(--primary-dark); padding: 50px 40px; border-right: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .service-icon { width: 35px; height: 35px; stroke: white; margin-bottom: 25px; }
+  .service-box h3 { color: white; font-size: 16px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.05em; }
+  .service-box p { color: rgba(255, 255, 255, 0.6); font-size: 13px; line-height: 1.6; }
+
+  /* ---------- STATISTICS BAR ---------- */
+  .stats-bar { background: #ffffff; padding: 60px 0; border-bottom: 1px solid var(--border-color); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+  .stat-item { display: flex; align-items: center; gap: 20px; }
+  .stat-icon { width: 40px; height: auto; }
+  .stat-number { font-size: 36px; font-weight: 700; color: var(--primary-dark); font-family: 'Montserrat', sans-serif; }
+  .stat-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ---------- PROJECT GALLERY ---------- */
+  .project-gallery { padding: 100px 0; background: var(--light-bg); }
+  .gallery-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 45px; }
+  .gallery-header h2 { font-size: 32px; text-transform: uppercase; }
+  
+  .gallery-filters { display: flex; gap: 24px; list-style: none; }
+  .gallery-filters button {
+    background: none; border: none; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.08em;
+    cursor: pointer; padding-bottom: 4px; border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .gallery-filters button.active, .gallery-filters button:hover {
+    color: var(--primary-dark); border-bottom-color: var(--primary-dark);
+  }
+
+  /* Masonry/Complex Grid Layout */
+  .gallery-grid-new { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+  .gallery-item { border-radius: 4px; overflow: hidden; position: relative; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .gallery-item:hover img { transform: scale(1.03); }
+  
+  .g-col-6 { grid-column: span 6; height: 350px; }
+  .g-col-3 { grid-column: span 3; height: 350px; }
+  .g-col-4 { grid-column: span 4; height: 260px; }
+  .g-col-8 { grid-column: span 8; height: 260px; }
+
+  /* ---------- CONTACT & GET IN TOUCH ---------- */
+  .get-in-touch { background: var(--primary-dark); color: white; padding: 100px 0; position: relative; }
+  .get-in-touch-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+  
+  .contact-info h2 { color: white; font-size: 40px; text-transform: uppercase; margin-bottom: 24px; line-height: 1.2; }
+  .contact-info p { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 45px; max-width: 450px; }
+  
+  .info-link-item { margin-bottom: 30px; }
+  .info-link-item label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; margin-bottom: 6px; }
+  .info-link-item a, .info-link-item span { font-size: 18px; color: white; font-weight: 500; }
+  
+  .contact-form-new { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .form-group-full { grid-column: span 2; }
+  .contact-form-new input, .contact-form-new textarea {
+    width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    padding: 16px; border-radius: 2px; color: white; font-family: inherit; font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .contact-form-new input:focus, .contact-form-new textarea:focus {
+    outline: none; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08);
+  }
+  .btn-submit-new {
+    grid-column: span 2; background: white; color: var(--primary-dark); border: none;
+    padding: 16px; font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; border-radius: 2px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    transition: all 0.3s ease;
+  }
+  .btn-submit-new:hover { background: #E2E8F0; }
+
+  /* Map Vector Style Design */
+  .map-container {
+    position: relative; border-radius: 4px; overflow: hidden; height: 350px; background: #0c1f36;
+    border: 1px solid rgba(255,255,255,0.1); margin-top: 40px;
+    background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+  .map-pin {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 20px; height: 20px; background: white; border-radius: 50%;
+    box-shadow: 0 0 0 8px rgba(255,255,255,0.2);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0px rgba(255,255,255,0.4); } 100% { box-shadow: 0 0 0 15px rgba(255,255,255,0); } }
+
+  /* ---------- FOOTER ---------- */
+  .footer-new { background: var(--primary-dark); border-top: 1px solid rgba(255,255,255,0.08); padding: 40px 0; color: rgba(255,255,255,0.5); font-size: 12px; }
+  .footer-new .wrap { display: flex; align-items: center; justify-content: space-between; }
+  .footer-left { display: flex; align-items: center; gap: 12px; }
+  .footer-socials { display: flex; gap: 20px; }
+  .footer-socials a { color: rgba(255,255,255,0.5); font-size: 16px; }
+  .footer-socials a:hover { color: white; }
+  
+  .scroll-to-top {
+    background: rgba(255,255,255,0.1); border: none; width: 36px; height: 36px;
+    border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s ease;
+  }
+  .scroll-to-top:hover { background: white; color: var(--primary-dark); }
+
+  /* ---------- RESPONSIVE DESIGN ---------- */
+  @media (max-width: 1024px) {
+    .hero .wrap { grid-template-columns: 1fr; text-align: center; gap: 60px; }
+    .hero-features { justify-content: center; }
+    .hero-actions { justify-content: center; }
+    .hero-illustration { justify-content: center; }
+    .projects-grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .services-grid-new { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .get-in-touch-grid { grid-template-columns: 1fr; gap: 60px; }
+  }
+  
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .burger { display: block; }
+    .projects-grid-4 { grid-template-columns: 1fr; }
+    .services-grid-new { grid-template-columns: 1fr; }
+    .gallery-grid-new { display: flex; flex-direction: column; }
+    .gallery-item { height: 280px !important; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .contact-form-new { grid-template-columns: 1fr; }
+    .form-group-full, .btn-submit-new { grid-column: span 1; }
+    .footer-new .wrap { flex-direction: column; gap: 24px; text-align: center; }
+  }
+</style>
 </head>
 <body>
 
+<!-- NAVIGATION -->
 <nav class="nav" id="nav">
   <div class="wrap">
     <a href="#top" class="brand">
-      <span class="brand-mark">AH</span>
-      <span class="brand-name">Ahmed Hamid<span>Architecture Studio</span></span>
+      <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25 80 L25 40 L50 20 L75 40 L75 80" stroke="#0A1B30" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M40 80 L40 50 L60 50 L60 80" stroke="#0A1B30" stroke-width="6" stroke-linejoin="round"/>
+        <line x1="25" y1="80" x2="75" y2="80" stroke="#0A1B30" stroke-width="6"/>
+      </svg>
+      <div class="brand-text">
+        <span class="brand-name">Ahmed Hamid</span>
+        <span class="brand-sub">Architecture</span>
+      </div>
     </a>
     <div class="nav-links">
-      <a href="#about">About</a>
+      <a href="#top" class="active">Home</a>
+      <a href="#about">About Us</a>
       <a href="#services">Services</a>
       <a href="#projects">Projects</a>
-      <a href="#process">Process</a>
+      <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
     </div>
-    <a href="#contact" class="nav-cta" style="display:none;" id="navCta">Start a Project</a>
-    <button class="burger" id="burger" aria-label="Open menu">☰</button>
+    <div class="nav-right">
+      <a href="#contact" class="btn-talk">Let's Talk</a>
+      <button class="burger" id="burger" aria-label="Open Menu">☰</button>
+    </div>
   </div>
 </nav>
 
+<!-- HERO SECTION -->
 <header class="hero" id="top">
-  <!-- تم تعديل مسار الصورة ليقرأ محلياً من مجلد الأصول الخاص بك -->
-  <div class="hero-img" style="background-image: linear-gradient(180deg, rgba(20,20,15,0.35) 0%, rgba(20,20,15,0.55) 55%, rgba(20,20,15,0.92) 100%), url('assets/hero-project.jpg');"></div>
-  <div class="blueprint-layer" aria-hidden="true">
-    <svg viewBox="0 0 1200 800" preserveAspectRatio="none">
-      <path d="M60 700 L60 300 L300 200 L640 200 L640 700" />
-      <path d="M300 200 L300 700" />
-      <path d="M420 300 L420 700 M420 300 L560 300 L560 700" />
-      <line x1="60" y1="300" x2="20" y2="300" />
-      <line x1="60" y1="200" x2="60" y2="700" stroke-dasharray="4 6" />
-      <circle cx="900" cy="150" r="46" />
-      <path d="M900 104 L900 196 M854 150 L946 150" />
-    </svg>
+  <div class="hero-counter">
+    <span>01</span>
+    <div class="line"></div>
+    <span>05</span>
   </div>
-  <div class="hero-content">
-    <div class="wrap">
-      <div class="hero-eyebrow mono"><span class="rule"></span>Architectural Design · Interior · Planning · Visualization</div>
-      <h1>We design modern spaces <em>that inspire.</em></h1>
-      <p class="hero-sub">An independent architecture studio shaping residential, commercial and interior projects — built on functional design, quiet detail and honest execution.</p>
+  
+  <div class="wrap">
+    <div class="hero-content">
+      <span class="section-tag">We Design</span>
+      <h1>Modern<br>Spaces</h1>
+      <div class="hero-features">
+        <span>Architecture</span> • <span>Interior</span> • <span>Planning</span> • <span>Visualization</span>
+      </div>
       <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">Explore Projects</a>
-        <a href="#contact" class="btn btn-ghost">Start Your Project</a>
+        <a href="#projects" class="btn-solid">View Projects &nbsp; →</a>
+        <a href="#contact" class="btn-outline">Contact Us</a>
       </div>
     </div>
+    
+    <div class="hero-illustration">
+      <!-- رسم هندسي دقيق ثلاثي الأبعاد للمبنى الحديث المماثل للتصميم -->
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000" alt="Modern Architecture Wireframe Render">
+    </div>
   </div>
-  <div class="hero-coord mono">
-    <div>15.5007° N, 32.5599° E</div>
-    <div>KHARTOUM — SITE A‑01</div>
+
+  <div class="scroll-down">
+    Scroll Down
+    <span>↓</span>
   </div>
 </header>
 
-<div class="sheet-strip">
-  <div class="wrap mono">
-    <span><strong>A‑01</strong>Architecture</span>
-    <span><strong>A‑02</strong>Interior</span>
-    <span><strong>A‑03</strong>Planning</span>
-    <span><strong>A‑04</strong>Visualization</span>
-    <span><strong>A‑05</strong>Construction Drawings</span>
-  </div>
-</div>
-
-<section class="about" id="about">
-  <div class="wrap about-grid">
-    <div class="about-media reveal">
-      <!-- تم تعديل مسار الصورة ليقرأ محلياً -->
-      <img src="assets/about.jpg" alt="Ahmed Hamid Architecture studio work">
-      <div class="about-badge">
-        <div class="num">01</div>
-        <div class="cap mono">Architecture Studio</div>
-      </div>
+<!-- FEATURED PROJECTS -->
+<section class="featured-projects" id="about">
+  <div class="wrap">
+    <span class="section-tag">Our Work</span>
+    <div class="section-header">
+      <h2>Featured Projects</h2>
+      <a href="#projects" class="view-all-link">View All Projects &nbsp; →</a>
     </div>
-    <div class="about-copy reveal">
-      <div class="section-tag mono"><span class="rule"></span>Who We Are</div>
-      <h2>Designing timeless spaces with creativity, precision and purpose.</h2>
-      <p>Ahmed Hamid Architecture is an independent studio dedicated to elegant, functional and contemporary spaces. Every project is developed with attention to detail, architectural identity and the needs of the people who will live in it.</p>
-      <p>From residential villas to commercial buildings, interiors and 3D visualization — the goal is the same: turn an idea into a space that works, and a space worth remembering.</p>
-      <ul class="checklist">
-        <li><span class="tick"></span><div><b>Modern architecture</b><span>Contemporary design with a clear identity.</span></div></li>
-        <li><span class="tick"></span><div><b>Functional planning</b><span>Smart circulation and efficient spaces.</span></div></li>
-        <li><span class="tick"></span><div><b>Photorealistic visualization</b><span>See the project before it's built.</span></div></li>
-        <li><span class="tick"></span><div><b>Interior design</b><span>Interiors as considered as the shell around them.</span></div></li>
-      </ul>
+    
+    <div class="projects-grid-4">
+      <!-- Project 1 -->
+      <div class="project-card-new">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=500" alt="Modern Villa">
+        <div class="project-card-content">
+          <h3>Modern Villa</h3>
+          <p>New Cairo, Egypt</p>
+          <span>2023</span>
+        </div>
+        <div class="project-card-arrow">→</div>
+      </div>
+      
+      <!-- Project 2 -->
+      <div class="project-card-new">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=500" alt="Corporate Headquarters">
+        <div class="project-card-content">
+          <h3>Corporate Headquarters</h3>
+          <p>Dubai, UAE</p>
+          <span>2022</span>
+        </div>
+        <div class="project-card-arrow">→</div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card-new">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=500" alt="Residential Complex">
+        <div class="project-card-content">
+          <h3>Residential Complex</h3>
+          <p>Riyadh, KSA</p>
+          <span>2023</span>
+        </div>
+        <div class="project-card-arrow">→</div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card-new">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=500" alt="Interior Design">
+        <div class="project-card-content">
+          <h3>Interior Design</h3>
+          <p>Jeddah, KSA</p>
+          <span>2022</span>
+        </div>
+        <div class="project-card-arrow">→</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="services" id="services">
+<!-- SERVICES (WHAT WE DO) -->
+<section class="what-we-do" id="services">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-tag mono"><span class="rule"></span>Our Services</div>
-        <h2>Architecture beyond expectations</h2>
-      </div>
-      <p>Comprehensive services from concept to detailed execution — creativity, technology and function in one process.</p>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <span class="sheet-no mono">A‑01</span>
+    <span class="section-tag">Our Services</span>
+    <h2>What We Do</h2>
+    
+    <div class="services-grid-new">
+      <div class="service-box">
+        <svg class="service-icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 12 L12 3 L21 12 M5 10 V20 H19 V10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
         <h3>Architectural Design</h3>
-        <p>Modern residential and commercial architecture built around function, aesthetics and sustainability.</p>
-        <a href="#contact" class="more">Learn more →</a>
+        <p>Creative and functional design solutions that reflect your vision.</p>
       </div>
-      <div class="service-card">
-        <span class="sheet-no mono">A‑02</span>
+
+      <div class="service-box">
+        <svg class="service-icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 4 H20 V20 H4 Z M9 9 H15 M9 14 H15" stroke="currentColor" stroke-width="2"/>
+        </svg>
         <h3>Interior Design</h3>
-        <p>Interior environments that enhance comfort, productivity and a project's visual identity.</p>
-        <a href="#contact" class="more">Learn more →</a>
+        <p>Modern interior spaces tailored to your lifestyle and needs.</p>
       </div>
-      <div class="service-card">
-        <span class="sheet-no mono">A‑03</span>
-        <h3>Urban Planning</h3>
-        <p>Planning solutions for residential developments, communities and public spaces.</p>
-        <a href="#contact" class="more">Learn more →</a>
-      </div>
-      <div class="service-card">
-        <span class="sheet-no mono">A‑04</span>
-        <h3>3D Visualization</h3>
-        <p>High-quality architectural visualization and realistic rendering before construction begins.</p>
-        <a href="#contact" class="more">Learn more →</a>
-      </div>
-      <div class="service-card">
-        <span class="sheet-no mono">A‑05</span>
-        <h3>Space Planning</h3>
-        <p>Layouts that maximize usability, movement and architectural quality.</p>
-        <a href="#contact" class="more">Learn more →</a>
-      </div>
-      <div class="service-card">
-        <span class="sheet-no mono">A‑06</span>
+
+      <div class="service-box">
+        <svg class="service-icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 21 H5 C3.89543 21 3 20.1046 3 19 V5 C3 3.89543 3.89543 3 5 3 H19 C20.1046 3 21 3.89543 21 5 V19 C21 20.1046 20.1046 21 19 21 Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 3 V21 M3 12 H21" stroke="currentColor" stroke-dasharray="2 2"/>
+        </svg>
         <h3>Construction Drawings</h3>
-        <p>Complete technical documentation prepared to professional architectural standards.</p>
-        <a href="#contact" class="more">Learn more →</a>
+        <p>Detailed and accurate drawings for smooth construction.</p>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="projects" id="projects">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-tag mono"><span class="rule"></span>Featured Projects</div>
-        <h2>Selected architectural work</h2>
+      <div class="service-box">
+        <svg class="service-icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 6 V12 L16 14" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <h3>Project Management</h3>
+        <p>From concept to completion, we manage every detail with precision.</p>
       </div>
-      <p>A growing portfolio of residential, commercial and interior projects — designed with precision and function.</p>
-    </div>
-    <div class="filters reveal">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="residential">Residential</button>
-      <button class="filter-btn" data-filter="commercial">Commercial</button>
-      <button class="filter-btn" data-filter="interior">Interior</button>
-      <button class="filter-btn" data-filter="planning">Planning</button>
-    </div>
-    <div class="project-grid reveal" id="projectGrid">
-      <!-- ستتم معالجة المشاريع ديناميكياً بواسطة ملف script.js -->
-    </div>
-    <p class="projects-note mono">Placeholder sheets shown above — swap each card's plan drawing for real project photography as work is completed and delivered.</p>
-  </div>
-</section>
 
-<section class="why">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-tag mono"><span class="rule"></span>Why Choose Us</div>
-        <h2>Excellence in every detail</h2>
+      <div class="service-box">
+        <svg class="service-icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2 C12 2 6 9 6 13 C6 16.3137 8.68629 19 12 19 C15.3137 19 18 16.3137 18 13 C18 9 12 2 12 2 Z" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <h3>Landscape Design</h3>
+        <p>Beautiful outdoor spaces that enhance the environment.</p>
       </div>
-      <p>What a young studio can promise: full attention, direct communication, and work judged on its own merit.</p>
-    </div>
-    <div class="why-grid reveal">
-      <div class="why-card">
-        <div class="icon"><svg viewBox="0 0 40 40"><path d="M5 30 L20 8 L35 30 Z"/><path d="M14 22 L26 22"/></svg></div>
-        <h3>Creative Ideas</h3>
-        <p>Every project starts with an idea worth building on, not a template.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon"><svg viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28"/><line x1="6" y1="20" x2="34" y2="20"/><line x1="20" y1="6" x2="20" y2="34"/></svg></div>
-        <h3>Precision</h3>
-        <p>Careful attention to proportion, material and technical detail in every drawing.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon"><svg viewBox="0 0 40 40"><path d="M6 30 L16 16 L24 24 L34 8"/><circle cx="34" cy="8" r="2"/></svg></div>
+
+      <div class="service-box">
+        <svg class="service-icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 3 L21 9 L12 18 L6 18 L6 12 L15 3 Z" stroke="currentColor" stroke-width="2"/>
+        </svg>
         <h3>3D Visualization</h3>
-        <p>Renders detailed enough for a client to walk through their project before it exists.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/><path d="M20 6 L20 34 M6 20 L34 20"/></svg></div>
-        <h3>Sustainable Design</h3>
-        <p>Solutions built for comfort, efficiency and long-term value — not just the render.</p>
+        <p>High quality 3D renders and walkthroughs before construction.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="process" id="process">
+<!-- STATISTICS BAR -->
+<section class="stats-bar">
+  <div class="wrap stats-grid">
+    <div class="stat-item">
+      <span class="stat-number">15+</span>
+      <span class="stat-label">Years Experience</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">120+</span>
+      <span class="stat-label">Projects Completed</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">35+</span>
+      <span class="stat-label">Happy Clients</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">8+</span>
+      <span class="stat-label">Countries Served</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT GALLERY -->
+<section class="project-gallery" id="projects">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-tag mono"><span class="rule"></span>How We Work</div>
-        <h2>From first sketch to handover</h2>
+    <span class="section-tag">Our Projects</span>
+    <div class="gallery-header">
+      <h2>Project Gallery</h2>
+      <div class="gallery-filters">
+        <button class="active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="residential">Residential</button>
+        <button class="filter-btn" data-filter="commercial">Commercial</button>
+        <button class="filter-btn" data-filter="interior">Interior</button>
+        <button class="filter-btn" data-filter="landscape">Landscape</button>
       </div>
-      <p>A straightforward process, so you always know what stage your project is at.</p>
     </div>
-    <div class="process-list reveal">
-      <div class="process-row">
-        <div class="step-no">01</div>
-        <h3>Brief &amp; Site Visit</h3>
-        <p>We start by understanding the site, the budget and how you actually want to live or work in the space.</p>
+
+    <!-- Masonry-style Grid identical to standard gallery designs -->
+    <div class="gallery-grid-new" id="galleryGrid">
+      <div class="gallery-item g-col-6" data-cat="residential">
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=600" alt="Residential Modern House">
       </div>
-      <div class="process-row">
-        <div class="step-no">02</div>
-        <h3>Concept Design</h3>
-        <p>Early plans, massing and mood direction, reviewed together before anything is locked in.</p>
+      <div class="gallery-item g-col-3" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=400" alt="Interior Living Room">
       </div>
-      <div class="process-row">
-        <div class="step-no">03</div>
-        <h3>Development &amp; Visualization</h3>
-        <p>The design is refined into detailed drawings and photorealistic renders you can walk through.</p>
+      <div class="gallery-item g-col-3" data-cat="residential">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=400" alt="Beautiful Villa Outside">
       </div>
-      <div class="process-row">
-        <div class="step-no">04</div>
-        <h3>Construction Documentation</h3>
-        <p>Complete technical drawings prepared to professional standard, ready for the contractor.</p>
+      <div class="gallery-item g-col-4" data-cat="commercial">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=500" alt="Office Commercial Building">
+      </div>
+      <div class="gallery-item g-col-8" data-cat="landscape">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="Landscape Courtyard View">
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-band">
-  <div class="compass" aria-hidden="true">
-    <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="95"/><circle cx="100" cy="100" r="70"/><path d="M100 5 L100 195 M5 100 L195 100"/></svg>
-  </div>
-  <div class="wrap reveal">
-    <div class="section-tag mono" style="justify-content:center; color:var(--gold);"><span class="rule" style="background:var(--gold)"></span>Let's Build Something Amazing<span class="rule" style="background:var(--gold)"></span></div>
-    <h2>Ready to start your dream project?</h2>
-    <p>Whether it's a villa, a commercial building or an interior fit-out — let's turn the idea into drawings, then into a place.</p>
-    <div class="cta-actions">
-      <a href="#contact" class="btn btn-primary">Contact Us</a>
-      <a href="#projects" class="btn btn-ghost">View Portfolio</a>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap contact-grid">
-    <div class="contact-copy reveal">
-      <div class="section-tag mono"><span class="rule"></span>Contact Us</div>
-      <h2>Let's discuss your next project</h2>
-      <p>Send a brief outline of what you're planning — site, size, timeline — and we'll follow up within a day or two.</p>
-
-      <div class="contact-detail">
-        <span class="mono">Email</span>
-        <a href="mailto:ahmedhamidarchitecture@gmail.com">ahmedhamidarchitecture@gmail.com</a>
+<!-- GET IN TOUCH & CONTACT -->
+<section class="get-in-touch" id="contact">
+  <div class="wrap get-in-touch-grid">
+    <div class="contact-info">
+      <span class="section-tag" style="color:rgba(255,255,255,0.5);">Get In Touch</span>
+      <h2>Let's Build<br>Something Great</h2>
+      <p>We would love to hear about your project. Let's create something amazing together.</p>
+      
+      <div class="info-link-item">
+        <label>Phone Number</label>
+        <a href="tel:+201234567890">+20 123 456 7890</a>
       </div>
-      <div class="contact-detail">
-        <span class="mono">Location</span>
-        <span class="val">Khartoum, Sudan</span>
+      <div class="info-link-item">
+        <label>Email Address</label>
+        <a href="mailto:info@ahmedhamidarch.com">info@ahmedhamidarch.com</a>
       </div>
-      <div class="social-row">
-        <a href="https://www.linkedin.com/in/ahmed-hamid-architecture-9b9372260/" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
-        <a href="https://www.instagram.com/ahmed_hamid_architecture" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
-        <a href="https://www.facebook.com/ahmedhamidarchitecture" aria-label="Facebook" target="_blank" rel="noopener">FB</a>
-        <a href="https://vm.tiktok.com/ZS9MCb1KJoBdN-iZvTF/" aria-label="TikTok" target="_blank" rel="noopener">TT</a>
+      <div class="info-link-item">
+        <label>Main Office</label>
+        <span>42 Street, New Cairo, Egypt</span>
+      </div>
+
+      <!-- Blueprint Vector Map Background -->
+      <div class="map-container">
+        <div class="map-pin"></div>
       </div>
     </div>
-    <form class="contact-form reveal" onsubmit="event.preventDefault(); this.querySelector('.form-status').textContent='Thanks — message noted. This demo form does not send yet.';">
-      <div>
-        <label class="mono" for="f-name">Name</label>
-        <input id="f-name" type="text" required placeholder="Your name">
+
+    <!-- Interactive Form -->
+    <form class="contact-form-new" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent successfully.');">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <div class="form-group-full">
+        <input type="text" placeholder="Subject" required>
       </div>
-      <div>
-        <label class="mono" for="f-email">Email</label>
-        <input id="f-email" type="email" required placeholder="you@email.com">
+      <div class="form-group-full">
+        <textarea rows="6" placeholder="Your Message" required></textarea>
       </div>
-      <div>
-        <label class="mono" for="f-type">Project Type</label>
-        <select id="f-type">
-          <option>Residential</option>
-          <option>Commercial</option>
-          <option>Interior</option>
-          <option>Planning</option>
-        </select>
-      </div>
-      <div>
-        <label class="mono" for="f-msg">Project Details</label>
-        <textarea id="f-msg" required placeholder="Site, size, timeline..."></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary" style="justify-self:start; background:var(--ink); color:var(--ivory);">Send Message</button>
-      <p class="form-status mono" style="color:var(--gold-dim);"></p>
+      <button type="submit" class="btn-submit-new">Send Message &nbsp; →</button>
     </form>
   </div>
 </section>
 
-<footer>
+<!-- FOOTER -->
+<footer class="footer-new">
   <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <div class="foot-brand">
-          <span class="brand-mark">AH</span>
-          <span class="brand-name">Ahmed Hamid Architecture</span>
-        </div>
-        <p style="max-width:34ch; font-size:14px;">Modern Architecture · Interior Design · Planning · Visualization — Khartoum, Sudan.</p>
-      </div>
-      <div class="foot-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Resources</h5>
-        <ul>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Follow</h5>
-        <ul>
-          <li><a href="https://www.instagram.com/ahmed_hamid_architecture" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.linkedin.com/in/ahmed-hamid-architecture-9b9372260/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://www.facebook.com/ahmedhamidarchitecture" target="_blank" rel="noopener">Facebook</a></li>
-        </ul>
-      </div>
+    <div class="footer-left">
+      <span class="brand-name" style="color: white; font-size: 13px;">Ahmed Hamid Architecture</span>
     </div>
-    <div class="foot-bottom">
-      <span>© 2026 Ahmed Hamid Architecture. All rights reserved.</span>
-      <span>Site A‑01 — Khartoum, Sudan</span>
+    <span>© 2026 Ahmed Hamid Architecture. All Rights Reserved.</span>
+    <div class="footer-socials">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="LinkedIn">IN</a>
+      <button class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" aria-label="Scroll to Top">↑</button>
     </div>
   </div>
 </footer>
 
-<!-- الربط مع ملف السكربت الخارجي -->
-<script src="script.js"></script>
+<script>
+  // Dynamic header updates on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.style.padding = '10px 0';
+      nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
+    } else {
+      nav.style.padding = '15px 0';
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  // Basic mobile menu toggle
+  const burger = document.getElementById('burger');
+  const navLinks = document.querySelector('.nav-links');
+  burger.addEventListener('click', () => {
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '70px';
+    navLinks.style.left = '0';
+    navLinks.style.right = '0';
+    navLinks.style.background = '#ffffff';
+    navLinks.style.padding = '20px';
+    navLinks.style.borderBottom = '1px solid var(--border-color)';
+  });
+
+  // Gallery interactive filters
+  const filterButtons = document.querySelectorAll('.gallery-filters button');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Toggle active states
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const filterValue = button.getAttribute('data-filter');
+
+      galleryItems.forEach(item => {
+        if (filterValue === 'all' || item.getAttribute('data-cat') === filterValue) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
