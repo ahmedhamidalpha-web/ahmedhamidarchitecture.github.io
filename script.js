@@ -10,8 +10,13 @@ window.addEventListener('scroll', () => {
 // reveal on scroll
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-}, {threshold:0.15});
+  entries.forEach(e => { 
+    if(e.isIntersecting){ 
+      e.target.classList.add('in'); 
+      io.unobserve(e.target); 
+    } 
+  });
+}, {threshold: 0.15});
 revealEls.forEach(el => io.observe(el));
 
 // burger (mobile) — simple toggle of nav-links as a stacked panel
@@ -28,17 +33,18 @@ burger.addEventListener('click', () => {
 
 // project data + blueprint placeholder cards
 const projects = [
-  {name:'Villa Rania', cat:'residential', label:'Residential', year:'2025'},
-  {name:'Nile View Offices', cat:'commercial', label:'Commercial', year:'2025'},
-  {name:'Sandstone Residence', cat:'residential', label:'Residential', year:'2024'},
-  {name:'Studio Loft Interior', cat:'interior', label:'Interior', year:'2024'},
-  {name:'Riverside Masterplan', cat:'planning', label:'Planning', year:'2024'},
-  {name:'Courtyard Villa', cat:'residential', label:'Residential', year:'2023'},
+  {name: 'Villa Rania', cat: 'residential', label: 'Residential', year: '2025'},
+  {name: 'Nile View Offices', cat: 'commercial', label: 'Commercial', year: '2025'},
+  {name: 'Sandstone Residence', cat: 'residential', label: 'Residential', year: '2024'},
+  {name: 'Studio Loft Interior', cat: 'interior', label: 'Interior', year: '2024'},
+  {name: 'Riverside Masterplan', cat: 'planning', label: 'Planning', year: '2024'},
+  {name: 'Courtyard Villa', cat: 'residential', label: 'Residential', year: '2023'},
 ];
 
 const grid = document.getElementById('projectGrid');
 
-function planSvg(seed){
+function planSvg(seed) {
+  // simple varied blueprint line based on seed index
   const variants = [
     '<path d="M20 90 L20 20 L60 20 L60 60 L90 60 L90 90 Z"/><line x1="20" y1="60" x2="60" y2="60"/>',
     '<rect x="20" y="20" width="70" height="70"/><line x1="55" y1="20" x2="55" y2="90"/><line x1="20" y1="55" x2="55" y2="55"/>',
@@ -47,10 +53,10 @@ function planSvg(seed){
   return variants[seed % variants.length];
 }
 
-function render(filter){
-  if(!grid) return;
+function render(filter) {
+  if (!grid) return;
   grid.innerHTML = '';
-  projects.filter(p => filter==='all' || p.cat===filter).forEach((p, i) => {
+  projects.filter(p => filter === 'all' || p.cat === filter).forEach((p, i) => {
     const card = document.createElement('div');
     card.className = 'project-card';
     card.innerHTML = `
@@ -64,11 +70,13 @@ function render(filter){
   });
 }
 
+// Initial render
 render('all');
 
+// Filter event listeners
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     render(btn.dataset.filter);
   });
