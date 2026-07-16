@@ -14,7 +14,7 @@ Projects | Ahmed Hamid Architecture
 
 
 <meta name="description"
-content="Explore architectural projects by Ahmed Hamid Architecture including residential, commercial and interior designs.">
+content="Explore architectural projects by Ahmed Hamid Architecture. Modern residential, commercial and interior design projects.">
 
 
 <link rel="icon" href="assets/logo.png">
@@ -39,7 +39,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 </head>
 
 
+
 <body>
+
+
 
 
 
@@ -47,19 +50,25 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <header class="header">
 
+
 <div class="container nav-container">
 
 
 <a href="index.html" class="logo">
 
+
 <img src="assets/logo.png"
-alt="Ahmed Hamid Architecture Logo">
+alt="Ahmed Hamid Architecture">
+
 
 <span>
 Ahmed Hamid Architecture
 </span>
 
+
 </a>
+
+
 
 
 
@@ -71,7 +80,12 @@ Ahmed Hamid Architecture
 
 
 
+
+
+
+
 <nav class="nav-menu">
+
 
 <a href="index.html">
 Home
@@ -88,7 +102,8 @@ Services
 </a>
 
 
-<a href="projects.html" class="active">
+<a href="projects.html"
+class="active">
 Projects
 </a>
 
@@ -103,12 +118,18 @@ Contact
 </a>
 
 
+
 </nav>
+
 
 
 </div>
 
+
 </header>
+
+
+
 
 
 
@@ -130,7 +151,7 @@ Architectural Projects
 
 
 <p>
-Explore our architectural concepts and design solutions.
+Discover our architectural ideas, concepts and design solutions.
 </p>
 
 
@@ -145,82 +166,41 @@ Explore our architectural concepts and design solutions.
 
 
 
-<!-- PROJECTS LIST -->
 
 
-<section class="projects">
+<!-- PROJECTS -->
+
+
+<section class="projects-page">
 
 
 <div class="container">
+
 
 
 <div class="section-header">
 
 
 <span class="section-subtitle">
+
 PORTFOLIO
+
 </span>
 
 
 <h2>
+
 Selected Projects
+
 </h2>
 
 
 <p>
-Modern architectural projects designed with creativity and functionality.
+
+Explore our projects with complete architectural details,
+design concepts and visual experience.
+
 </p>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="projects-filter">
-
-
-<button class="filter-btn active"
-data-filter="all">
-
-All
-
-</button>
-
-
-<button class="filter-btn"
-data-filter="residential">
-
-Residential
-
-</button>
-
-
-<button class="filter-btn"
-data-filter="commercial">
-
-Commercial
-
-</button>
-
-
-<button class="filter-btn"
-data-filter="interior">
-
-Interior
-
-</button>
-
-
-<button class="filter-btn"
-data-filter="planning">
-
-Planning
-
-</button>
 
 
 </div>
@@ -235,61 +215,19 @@ Planning
 class="projects-grid">
 
 
-</div>
+<!-- Projects loaded from Supabase -->
 
 
+<div class="loading">
 
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- SINGLE PROJECT VIEW -->
-
-
-<section class="single-project">
-
-
-<div class="container">
-
-
-
-<div id="project-gallery"
-class="project-gallery">
-
-
-</div>
-
-
-
-
-
-<div class="project-content-box">
-
-
-<h2 id="project-title">
-
-</h2>
-
-
-
-<div id="project-description">
-
+Loading Projects...
 
 </div>
 
 
 
 </div>
+
 
 
 
@@ -306,30 +244,68 @@ class="project-gallery">
 
 
 
-<!-- COMMENTS SECTION -->
+
+<!-- PROJECT DETAILS MODAL -->
 
 
-<section class="comments-section">
+<div id="project-modal"
+class="project-modal">
 
 
-<div class="container">
+<div class="project-modal-content">
 
 
-<div class="section-header">
+
+<button id="close-modal">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
 
 
-<span class="section-subtitle">
-COMMENTS
-</span>
 
 
-<h2>
-Visitor Comments
-</h2>
 
+<div id="modal-gallery"
+class="modal-gallery">
 
 </div>
 
+
+
+
+
+
+<h2 id="modal-title">
+
+</h2>
+
+
+
+
+
+
+<div id="modal-info">
+
+</div>
+
+
+
+
+
+
+
+<!-- COMMENTS -->
+
+
+<div class="comments-section">
+
+
+<h3>
+
+Comments
+
+</h3>
 
 
 
@@ -345,63 +321,57 @@ Visitor Comments
 
 
 
-
-<div class="comment-box">
-
-
-<h3>
-Leave Your Comment
-</h3>
-
+<form id="comment-form">
 
 
 
 <textarea
 id="comment-text"
-placeholder="Write your comment here...">
-</textarea>
+placeholder="Write your comment..."
+required></textarea>
 
 
 
 
 
-<button
-class="btn btn-primary"
-onclick="
+<button class="btn btn-primary"
+type="submit">
 
-addComment(
-new URLSearchParams(window.location.search).get('id')
-)
-
-">
 
 Send Comment
+
 
 </button>
 
 
 
 
+</form>
+
+
+
 </div>
 
 
 
 
+
+
+</div>
+
 </div>
 
 
-</section>
 
 
 
+<script src="script.js"></script>
 
 
+</body>
 
-
-
-
+</html>
 <!-- FOOTER -->
-
 
 <footer class="footer">
 
@@ -409,12 +379,12 @@ Send Comment
 <div class="container footer-grid">
 
 
-<div>
 
+<div>
 
 <img src="assets/logo.png"
 class="footer-logo"
-alt="Logo">
+alt="Ahmed Hamid Architecture">
 
 
 <h3>
@@ -423,7 +393,7 @@ Ahmed Hamid Architecture
 
 
 <p>
-Modern Architecture • Interior Design • Planning
+Modern Architecture • Interior Design • Planning • Visualization
 </p>
 
 
@@ -432,8 +402,8 @@ Modern Architecture • Interior Design • Planning
 
 
 
-<div>
 
+<div>
 
 <h4>
 Company
@@ -463,6 +433,13 @@ Projects
 </li>
 
 
+<li>
+<a href="gallery.html">
+Gallery
+</a>
+</li>
+
+
 </ul>
 
 
@@ -472,22 +449,33 @@ Projects
 
 
 
+
+
 <div>
 
-
 <h4>
-Contact
+Resources
 </h4>
 
 
-<p>
-Sudan
-</p>
+<ul>
 
 
-<p>
-ahmedhamidarchitecture@gmail.com
-</p>
+<li>
+<a href="blog.html">
+Blog
+</a>
+</li>
+
+
+<li>
+<a href="contact.html">
+Contact
+</a>
+</li>
+
+
+</ul>
 
 
 </div>
@@ -496,7 +484,63 @@ ahmedhamidarchitecture@gmail.com
 
 
 
+
+
+
+<div>
+
+<h4>
+Follow Us
+</h4>
+
+
+<div class="social-links">
+
+
+<a href="https://www.linkedin.com/in/ahmed-hamid-architecture-9b9372260/"
+target="_blank">
+
+<i class="fab fa-linkedin"></i>
+
+</a>
+
+
+
+<a href="https://www.instagram.com/ahmed_hamid_architecture"
+target="_blank">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+
+
+<a href="https://www.facebook.com/ahmedhamidarchitecture"
+target="_blank">
+
+<i class="fab fa-facebook"></i>
+
+</a>
+
+
+
+<a href="https://vm.tiktok.com/ZS9MCb1KJoBdN-iZvTF/"
+target="_blank">
+
+<i class="fab fa-tiktok"></i>
+
+</a>
+
+
 </div>
+
+
+</div>
+
+
+
+</div>
+
 
 
 
@@ -512,6 +556,7 @@ All Rights Reserved.
 </div>
 
 
+
 </footer>
 
 
@@ -520,6 +565,9 @@ All Rights Reserved.
 
 
 
+
+
+<!-- BACK TO TOP -->
 
 <button id="backToTop">
 
