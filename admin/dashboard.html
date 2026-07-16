@@ -1,412 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<title>
-Admin Dashboard | Ahmed Hamid Architecture
-</title>
-
-
-<link rel="icon" href="../assets/logo.png">
-
-
-<link rel="stylesheet" href="../style.css">
-
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-
-<!-- Chart Library -->
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Ahmed Hamid Architecture</title>
+    <link rel="icon" href="../assets/logo.png">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
-
-
-<body class="admin-body">
-
-
-
-
-
-<header class="admin-header">
-
-
-<div class="container">
-
-
-<a href="../index.html"
-class="admin-logo">
-
-
-<img src="../assets/logo.png">
-
-
-<span>
-Ahmed Hamid Architecture
-</span>
-
-
-</a>
-
-
-
-
-
-<button id="logout-btn"
-class="admin-logout">
-
-
-Logout
-
-</button>
-
-
-
-</div>
-
-
-</header>
-
-
-
-
-
-
-
-
-
-<section class="admin-dashboard">
-
-
-<div class="container">
-
-
-
-
-
-<h1>
-
-Dashboard
-
-</h1>
-
-
-<p>
-
-Manage your architecture studio website.
-
-</p>
-
-
-
-
-
-
-
-
-
-<!-- QUICK STATS -->
-
-
-<div class="dashboard-cards">
-
-
-
-
-
-<div class="dashboard-card">
-
-
-<i class="fa-solid fa-building"></i>
-
-
-<h3>
-
-Projects
-
-</h3>
-
-
-<span id="projects-count">
-
-0
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="dashboard-card">
-
-
-<i class="fa-solid fa-newspaper"></i>
-
-
-<h3>
-
-Posts
-
-</h3>
-
-
-<span id="posts-count">
-
-0
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="dashboard-card">
-
-
-<i class="fa-solid fa-comments"></i>
-
-
-<h3>
-
-Comments
-
-</h3>
-
-
-<span id="comments-count">
-
-0
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="dashboard-card">
-
-
-<i class="fa-solid fa-users"></i>
-
-
-<h3>
-
-Visitors
-
-</h3>
-
-
-<span id="visitors-count">
-
---
-
-</span>
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- ANALYTICS -->
-
-
-<div class="admin-box analytics-box">
-
-
-
-<h2>
-
-Website Analytics
-
-</h2>
-
-
-
-<p>
-
-Visitor statistics from Google Analytics
-
-</p>
-
-
-
-
-
-
-<div class="chart-container">
-
-
-<canvas id="visitorChart">
-
-</canvas>
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- MANAGEMENT -->
-
-
-<div class="dashboard-actions">
-
-
-
-
-
-
-<a href="add-project.html"
-class="admin-action">
-
-
-<i class="fa-solid fa-plus"></i>
-
-
-Add Project
-
-
-</a>
-
-
-
-
-
-
-
-
-<a href="edit-project.html"
-class="admin-action">
-
-
-<i class="fa-solid fa-pen"></i>
-
-
-Edit Projects
-
-
-</a>
-
-
-
-
-
-
-
-
-<a href="posts.html"
-class="admin-action">
-
-
-<i class="fa-solid fa-file"></i>
-
-
-Manage Posts
-
-
-</a>
-
-
-
-
-
-
-
-
-<a href="../projects.html"
-class="admin-action"
-target="_blank">
-
-
-<i class="fa-solid fa-eye"></i>
-
-
-View Website
-
-
-</a>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<script src="../script.js"></script>
-
-
+<body class="admin-login-body">
+
+    <div class="admin-login-box">
+        <img src="../assets/logo.png" class="admin-login-logo" alt="Ahmed Hamid Architecture">
+        <h1>Admin Login</h1>
+        <p>Ahmed Hamid Architecture Dashboard</p>
+
+        <form id="login-form">
+            <div class="form-group">
+                <label for="admin-email">Email</label>
+                <input type="email" id="admin-email" placeholder="Enter admin email" required>
+            </div>
+
+            <div class="form-group password-group" style="position: relative;">
+                <label for="admin-password">Password</label>
+                <input type="password" id="admin-password" placeholder="Enter password" required style="width: 100%; padding-right: 40px;">
+                <i class="fa-regular fa-eye" id="toggle-password" style="position: absolute; right: 15px; top: 38px; cursor: pointer; color: #777;"></i>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-right-to-bracket"></i> Login
+            </button>
+
+            <p id="login-message"></p>
+        </form>
+    </div>
+
+    <script>
+        // ميزة تبديل رؤية كلمة المرور
+        const togglePassword = document.getElementById('toggle-password');
+        const passwordInput = document.getElementById('admin-password');
+
+        togglePassword.addEventListener('click', function () {
+            // تبديل نوع الحقل بين password و text
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            // تبديل شكل أيقونة العين
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // كود معالجة تسجيل الدخول والتحقق من البيانات
+        document.getElementById("login-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById("admin-email").value.trim();
+            const password = document.getElementById("admin-password").value;
+            const messageElement = document.getElementById("login-message");
+
+            // تنظيف أي فئات تنسيق سابقة
+            messageElement.className = ""; 
+
+            // البيانات الافتراضية للتحقق
+            if (email === "admin@email.com" && password === "Password") {
+                localStorage.setItem("admin", "true");
+                
+                messageElement.textContent = "Login Successful!";
+                messageElement.classList.add("success"); // إضافة كلاس للنجاح
+
+                setTimeout(function() {
+                    window.location.href = "dashboard.html";
+                }, 700);
+            } else {
+                messageElement.textContent = "Wrong Email Or Password";
+                messageElement.classList.add("error"); // إضافة كلاس للخطأ
+            }
+        });
+    </script>
 </body>
-
 </html>
