@@ -1,83 +1,53 @@
-// nav solid on scroll
-const nav = document.getElementById('nav');
-const navCta = document.getElementById('navCta');
-window.addEventListener('scroll', () => {
-  const solid = window.scrollY > 60;
-  nav.classList.toggle('solid', solid);
-  navCta.style.display = solid ? 'inline-flex' : 'none';
-});
+// Scroll reveal
+const io = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target);}})},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// reveal on scroll
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { 
-    if(e.isIntersecting){ 
-      e.target.classList.add('in'); 
-      io.unobserve(e.target); 
-    } 
-  });
-}, {threshold: 0.15});
-revealEls.forEach(el => io.observe(el));
-
-// burger (mobile) — simple toggle of nav-links as a stacked panel
-const burger = document.getElementById('burger');
-const navLinks = document.querySelector('.nav-links');
-burger.addEventListener('click', () => {
-  const open = navLinks.style.display === 'flex';
-  if(open){
-    navLinks.style.display = 'none';
-  } else {
-    navLinks.style.cssText = 'display:flex; position:fixed; top:64px; left:0; right:0; background:#14140F; flex-direction:column; padding:24px 28px; gap:20px;';
+// Nav solid-on-scroll (only affects pages that opt in via .nav-scroll-solid)
+window.addEventListener('scroll', ()=>{
+  const nav = document.getElementById('nav');
+  if(nav && nav.classList.contains('nav-scroll-solid')){
+    nav.classList.toggle('solid', window.scrollY > 40);
   }
 });
 
-// project data + blueprint placeholder cards
-const projects = [
-  {name: 'Villa Rania', cat: 'residential', label: 'Residential', year: '2025'},
-  {name: 'Nile View Offices', cat: 'commercial', label: 'Commercial', year: '2025'},
-  {name: 'Sandstone Residence', cat: 'residential', label: 'Residential', year: '2024'},
-  {name: 'Studio Loft Interior', cat: 'interior', label: 'Interior', year: '2024'},
-  {name: 'Riverside Masterplan', cat: 'planning', label: 'Planning', year: '2024'},
-  {name: 'Courtyard Villa', cat: 'residential', label: 'Residential', year: '2023'},
+// Mobile burger menu
+const burger = document.getElementById('burger');
+const navLinks = document.querySelector('.nav-links');
+if(burger && navLinks){
+  burger.addEventListener('click', ()=>{
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.cssText = open ? 'display:none;' : 'display:flex; position:fixed; top:64px; left:0; right:0; background:#fff; flex-direction:column; padding:20px 32px; gap:18px; border-bottom:1px solid var(--line); z-index:99;';
+  });
+}
+
+// Gallery / project filtering — pages define window.GALLERY_DATA before loading this script
+const DEFAULT_GALLERY = [
+  {url:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=700&auto=format&fit=crop', cat:'residential', cls:'g1', name:'Modern Villa — Concept'},
+  {url:'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=700&auto=format&fit=crop', cat:'interior', cls:'g2', name:'Living Space — Concept'},
+  {url:'https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=700&auto=format&fit=crop', cat:'residential', cls:'g3', name:'Villa with Pool — Concept'},
+  {url:'https://images.unsplash.com/photo-1600566753376-12c8ab8e17a9?q=80&w=700&auto=format&fit=crop', cat:'commercial', cls:'g4', name:'Office Building — Concept'},
+  {url:'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=700&auto=format&fit=crop', cat:'interior', cls:'g5', name:'Interior Lounge — Concept'},
+  {url:'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?q=80&w=700&auto=format&fit=crop', cat:'commercial', cls:'g2', name:'Commercial Facade — Concept'},
 ];
-
-const grid = document.getElementById('projectGrid');
-
-function planSvg(seed) {
-  // simple varied blueprint line based on seed index
-  const variants = [
-    '<path d="M20 90 L20 20 L60 20 L60 60 L90 60 L90 90 Z"/><line x1="20" y1="60" x2="60" y2="60"/>',
-    '<rect x="20" y="20" width="70" height="70"/><line x1="55" y1="20" x2="55" y2="90"/><line x1="20" y1="55" x2="55" y2="55"/>',
-    '<path d="M15 85 L15 30 L50 15 L85 30 L85 85 Z"/><line x1="15" y1="55" x2="85" y2="55"/>',
-  ];
-  return variants[seed % variants.length];
-}
-
-function render(filter) {
-  if (!grid) return;
+const galleryImages = window.GALLERY_DATA || DEFAULT_GALLERY;
+const grid = document.getElementById('galleryGrid');
+function renderGallery(filter){
+  if(!grid) return;
   grid.innerHTML = '';
-  projects.filter(p => filter === 'all' || p.cat === filter).forEach((p, i) => {
-    const card = document.createElement('div');
-    card.className = 'project-card';
-    card.innerHTML = `
-      <div class="plan"><svg viewBox="0 0 100 100">${planSvg(i)}</svg></div>
-      <div class="meta">
-        <span class="cat mono">${p.label}</span>
-        <h4>${p.name}</h4>
-        <span class="yr mono">${p.year}</span>
-      </div>`;
-    grid.appendChild(card);
+  galleryImages.filter(g=>filter==='all'||g.cat===filter).forEach(g=>{
+    const div = document.createElement('div');
+    div.className = 'g-item ' + (g.cls || 'g2');
+    div.innerHTML = `<img src="${g.url}" alt="${g.name || g.cat + ' project photo'}" loading="lazy">`;
+    grid.appendChild(div);
   });
 }
-
-// Initial render
-render('all');
-
-// Filter event listeners
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    render(btn.dataset.filter);
+if(grid){
+  renderGallery('all');
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      renderGallery(btn.dataset.filter);
+    });
   });
-});
+}
